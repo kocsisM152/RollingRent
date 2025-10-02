@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    />
+    <link
+     rel="stylesheet" 
+     href="/css/users.css"
+     />
+    <title>Felhasználók</title>
+</head>
+<body>
+    <%- include('nav.ejs') %>
+    <div id="users-kontener">
+        <h1>Felhasználók</h1>
+        <div class="user-kontener">
+            <h1>
+                Név:
+                <input
+                 type="text"
+                 id="nev"
+                 value="<%= userBackend.nev %>"
+                 />
+            </h1>
+            <p>
+                Státusz:
+                <select id="statusz">
+                    <option value=""></option>
+                    <option value="olvasó">olvasó</option>
+                    <option value="szerkesztő">szerkesztő</option>
+                    <option value="admin">admin</option>
+                </select>
+                <%= userBackend.statusz %>
+            </p>
+            <button onclick="szerkesztes('<%= userBackend._id %> ')">
+                Szerkesztés
+            </button>
+            <button onclick="torles('<%= userBackend._id %>')">
+                Törlés
+            </button>
+        </div>
+        <script src="/js/users-backend.js"></script>
+    </div>
+    
+</body>
+</html>
