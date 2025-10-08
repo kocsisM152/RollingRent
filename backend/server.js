@@ -29,4 +29,4 @@ app.get('/', (req, res) => {
     }
 });
 
-app.use('/users-backend', require('./routes/userRoutesBackend.js'));
+app.use('/cars-backend', require('./routes/carRoutesBackend.js'));
