@@ -1,19 +1,19 @@
 const express = require('express');
 const {
-    getAllCarsBackend,
+    getnewcar,
     postCarBackend,
     getAllUsersBackend,
     postUserBackend, 
     getOneUserBackend,
     deleteOneUserBackend,
     updateOneUserBackend,
-} = require('../controllers/carControllersBackend');
+} = require('../controllers/newcarControllers');
 
 const router = express.Router();
 
-router.get('/', getAllCarsBackend);
+router.get('/', getnewcar);
 // router.get('/:id', getOneUserBackend);
-router.post('/', postCarBackend);
+// router.post('/', postCarBackend);
 // router.put('/modosit/:id', updateOneUserBackend);
 // router.delete('/torol/:id', deleteOneUserBackend);
 

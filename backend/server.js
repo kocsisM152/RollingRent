@@ -30,3 +30,4 @@ app.get('/', (req, res) => {
 });
 
 app.use('/cars-backend', require('./routes/carRoutesBackend.js'));
+app.use('/newcar', require('./routes/newcarRoutes.js'));

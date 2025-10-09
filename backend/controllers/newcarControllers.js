@@ -1,6 +1,6 @@
 const Car = require('../models/Car');
 
-exports.getAllCarsBackend = async (req, res) => {
+exports.getnewcar = async (req, res) => {
     try {
         const carsBackend = await Car.find({});
         res.statusCode = 200;
@@ -21,7 +21,7 @@ exports.getAllCarsBackend = async (req, res) => {
 //         res.statusCode = 404;
 //         return res.render('404.ejs');
 //     }
-// // };
+// };
 
 // exports.postCarBackend = async (req, res) => {
 //     try {
