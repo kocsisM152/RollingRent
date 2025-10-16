@@ -2,10 +2,13 @@ require('dotenv').config();
 
 const path = require('node:path');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.set('view engine', 'ejs');
+app.use(cors());
+app.use(express.json());
 
 const PORT = process.env.PORT || 3500;
 
@@ -30,4 +33,4 @@ app.get('/', (req, res) => {
 });
 
 app.use('/cars-backend', require('./routes/carRoutesBackend.js'));
-app.use('/newcar', require('./routes/newcarRoutes.js'));
+app.use('/new-car', require('./routes/newcarRoutes.js'));

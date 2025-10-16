@@ -1,10 +1,9 @@
 const Car = require('../models/Car');
 
-exports.getnewcar = async (req, res) => {
+exports.getnewcar =  (req, res) => {
     try {
-        const carsBackend = await Car.find({});
         res.statusCode = 200;
-        return res.render('cars.ejs', { carsBackend });
+        return res.render('new-car.ejs');
     } catch (error) {
         res.statusCode = 404;
         return res.render('404.ejs');
@@ -23,18 +22,21 @@ exports.getnewcar = async (req, res) => {
 //     }
 // };
 
-// exports.postCarBackend = async (req, res) => {
-//     try {
-//         const { nev, statusz } = req.body;
-//         const newCarBackend = new Car({ nev, statusz });
-//         await newCarBackend.save();
-//         res.statusCode = 201;
-//         return res.json({ msg: 'Létre jött az új felhasználó!' });
-//     } catch (error) {
-//         res.statusCode = 404;
-//         return res.json({ msg: 'Nem jött létre az új felhasználó!' });
-//     }
-// };
+exports.postCarBackend = async (req, res) => {
+    try {
+        const { marka, tipus, evjarat, szarmazasiorszag, ar, kep } = req.body;
+        const kepek = kep.split('\n');
+        const newCarBackend = new Car({ marka, tipus, evjarat, szarmazasiorszag, ar, kepek });
+        console.log(newCarBackend);
+        
+        await newCarBackend.save();
+        res.statusCode = 201;
+        return res.json({ msg: 'Létre jött az új felhasználó!' });
+    } catch (error) {
+        res.statusCode = 404;
+        return res.json({ msg: 'Nem jött létre az új felhasználó!' });
+    }
+};
 
 // exports.updateOneCarBackend = async (req, res) => {
 //     try {

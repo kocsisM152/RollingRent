@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get('/', getAllCarsBackend);
 // router.get('/:id', getOneUserBackend);
-router.post('/', postCarBackend);
+// router.post('/', postCarBackend);
 // router.put('/modosit/:id', updateOneUserBackend);
 // router.delete('/torol/:id', deleteOneUserBackend);
 
