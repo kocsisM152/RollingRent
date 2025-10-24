@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/car.css"
+        />
+        <title>Egy koci módosítása</title>
+    </head>
+    <body>
+        <%- include('nav.ejs') %>
+        <div id="car-kontener">
+            <h1>Egy kocsi módosítása</h1>
+            <form>
+                <table>
+                    <tr>
+                        <td>Márka:</td>
+                        <td>
+                            <select id="marka">
+                                <% for( let i = 0; i < markak.length; i++ ) { %>
+                                <% if (car.marka === markak[i]) { %>
+                                <option
+                                    value="<%= markak[i] %>"
+                                    selected
+                                >
+                                    <%= markak[i] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%= markak[i] %>">
+                                    <%= markak[i] %>
+                                </option>
+                                <% } %> <% } %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Típus:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="tipus"
+                                value="<%= car.tipus %>"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Évjárat:</td>
+                        <td>
+                            <input
+                                type="number"
+                                id="evjarat"
+                                value="<%= car.evjarat %>"
+                            />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Származási ország:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="szarmazasiorszag"
+                                value="<%= car.szarmazasiorszag %>"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Leírás:</td>
+                        <td>
+                            <textarea
+                                rows="10"
+                                cols="100"
+                                id="leiras"
+                            >
+<%= car.leiras %></textarea
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ár (óra/Ft):</td>
+                        <td>
+                            <input
+                                type="number"
+                                id="ar"
+                                value="<%= car.ar %>"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kedvezmény:</td>
+                        <td>
+                            <select id="kedvezmeny">
+                                <% for( let i = 0; i < kedvezmenyek.length; i++
+                                ) { %> <% if (car.kedvezmeny ===
+                                kedvezmenyek[i]) { %>
+                                <option
+                                    value="<%= kedvezmenyek[i] %>"
+                                    selected
+                                >
+                                    <%= kedvezmenyek[i] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%= kedvezmenyek[i] %>">
+                                    <%= kedvezmenyek[i] %>
+                                </option>
+                                <% } %> <% } %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kép1:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="kep1"
+                                value="<%= car.kepek[0] %>"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kép2:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="kep2"
+                                value="<%= car.kepek[1] %>"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kép3:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="kep3"
+                                value="<%= car.kepek[2] %>"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button onclick="modosit(event, '<%= car._id %>')">
+                                Módosít
+                            </button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <script src="/js/kocsi-modosit.js"></script>
+    </body>
+</html>

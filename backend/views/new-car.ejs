@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/new-car.css"
+        />
+        <title>Új autó felvétele</title>
+    </head>
+    <body>
+        <%- include('nav.ejs') %>
+        <div id="new-book-kontener">
+            <h1>Új autó felvétele</h1>
+            <form>
+                <table>
+                    <tr>
+                        <td>Márka:</td>
+                        <td>
+                            <select id="marka">
+                                <% for( let i = 0; i < markak.length; i++ ) { %>
+                                <option value="<%= markak[i] %>">
+                                    <%= markak[i] %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Típus:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="tipus"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Évjárat:</td>
+                        <td>
+                            <input
+                                type="number"
+                                id="evjarat"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Származási ország:</td>
+                        <td>
+                            <input
+                                type="string"
+                                id="szarmazasiorszag"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Leírás:</td>
+                        <td>
+                            <textarea
+                                rows="10"
+                                cols="100"
+                                id="leiras"
+                            ></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ár (óra/Ft):</td>
+                        <td>
+                            <input
+                                type="number"
+                                id="ar"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kedvezmény:</td>
+                        <td>
+                            <select id="kedvezmeny">
+                                <% for( let i = 0; i < kedvezmenyek.length; i++
+                                ) { %>
+                                <option value="<%= kedvezmenyek[i] %>">
+                                    <%= kedvezmenyek[i] %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kép 1:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="kep1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kép 2:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="kep2"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kép 3:</td>
+                        <td>
+                            <input
+                                type="text"
+                                id="kep3"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button onclick="letrehoz(event)">Létrehoz</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <script src="/js/letrehoz.js"></script>
+    </body>
+</html>

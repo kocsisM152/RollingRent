@@ -1,4 +1,4 @@
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
 
 const carSchem = new mongoose.Schema(
     {
@@ -10,14 +10,34 @@ const carSchem = new mongoose.Schema(
             type: String,
             require: true,
         },
+        evjarat: {
+            type: Number,
+            require: true,
+        },
+        szarmazasiorszag: {
+            type: String,
+            require: true,
+        },
+        leiras: {
+            type: String,
+            require: true,
+        },
+        ar: {
+            type: Number,
+            require: true,
+        },
+        kedvezmeny: {
+            type: Number,
+            require: true,
+        },
         kepek: [
             {
                 type: String,
                 require: true,
-            }   
-        ]
+            },
+        ],
     },
-    {timestamps: true}
+    { timestamps: true }
 );
 
 const CarModel = mongoose.model('car', carSchem);

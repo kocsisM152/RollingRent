@@ -1,11 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Cars</h1>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/cars.css"
+        />
+        <title>Kocsik backend</title>
+    </head>
+    <body>
+        <%- include('nav.ejs') %>
+        <div id="cars-kontener">
+            <h1>Cars</h1>
+            <p><a href="/api/new-car">Új kocsi felvétele</a></p>
+            <div id="tarto">
+                <div id="szurok">
+                    <div class="szuro">
+                        <h4>Márkák:</h4>
+                        <div id="zsanerek">
+                            <div class="zsaner">
+                                <input
+                                    checked
+                                    type="checkbox"
+                                    id="zsaner-mind"
+                                />
+                                <label for="zsaner-mind">Minden márka</label>
+                            </div>
+                            <div id="belso-zsanerek">
+                                <% markak.forEach(elem => { %>
+                                <div class="zsaner">
+                                    <input
+                                        type="checkbox"
+                                        id="<%= elem %>"
+                                    />
+                                    <label for="<%= elem %>"><%= elem %></label>
+                                </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="szuro">
+                        <h4>Kedvezmények:</h4>
+                        <div id="kedvezmenyek">
+                            <div class="kedvezmeny">
+                                <input
+                                    checked
+                                    type="checkbox"
+                                    id="kedvezmeny-mind"
+                                />
+                                <label for="kedvezmeny-mind"
+                                    >Minden kedvezmény</label
+                                >
+                            </div>
+                            <div id="belso-kedvezmenyek">
+                                <% kedvezmenyek.forEach(elem => { %>
+                                <div class="kedvezmeny">
+                                    <input
+                                        type="checkbox"
+                                        id="kedvezmeny<%= elem %>"
+                                    />
+                                    <label for="kedvezmeny<%= elem %>"
+                                        ><%= elem %>%</label
+                                    >
+                                </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="szures()">Szűrés</button>
+                </div>
+                <div id="kocsik">
+                    <% cars.forEach(elem => { %>
+                    <div class="kocsi">
+                        <table>
+                            <tr>
+                                <td>Márka:</td>
+                                <td><%= elem.marka %></td>
+                            </tr>
+                            <tr>
+                                <td>Típus:</td>
+                                <td><%= elem.tipus %></td>
+                            </tr>
+                            <tr>
+                                <td>Évjárat:</td>
+                                <td><%= elem.evjarat %></td>
+                            </tr>
+                            <tr>
+                                <td>Származási ország:</td>
+                                <td><%= elem.szarmazasiorszag %></td>
+                            </tr>
+                            <tr>
+                                <td>Leírás:</td>
+                                <td><%= elem.leiras %></td>
+                            </tr>
+                            <tr>
+                                <td>Ár (óra/Ft):</td>
+                                <td><%= elem.ar %> Ft</td>
+                            </tr>
+                            <tr>
+                                <td>Kedvezmény:</td>
+                                <td><%= elem.kedvezmeny %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Képek:</td>
+                                <td>
+                                    <% elem.kepek.forEach(item => { %>
+                                    <div>
+                                        <img
+                                            src="<%= item %>"
+                                            alt="<%= item %>"
+                                        />
+                                    </div>
+                                    <% }) %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a
+                                        class="modosit"
+                                        href="/api/cars-backend/<%= elem._id %>"
+                                    >
+                                        Módosítás
+                                    </a>
+                                </td>
+                                <td>
+                                    <button
+                                        class="torol"
+                                        onclick="torles('<%= elem._id%>')"
+                                    >
+                                        Törlés
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        <script src="/js/kocsi-kezel.js"></script>
+        <script src="/js/szures.js"></script>
+    </body>
 </html>

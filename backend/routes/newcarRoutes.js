@@ -1,20 +1,10 @@
 const express = require('express');
-const {
-    getnewcar,
-    postCarBackend,
-    getAllUsersBackend,
-    postUserBackend, 
-    getOneUserBackend,
-    deleteOneUserBackend,
-    updateOneUserBackend,
-} = require('../controllers/newcarControllers');
+const pictureUploader = require('../middlewares/pictureToCloudinary');
 
+const { getNewCar, postNewCar } = require('../controllers/newCarControllers');
 const router = express.Router();
 
-router.get('/', getnewcar);
-// router.get('/:id', getOneUserBackend);
-// router.post('/', postCarBackend);
-// router.put('/modosit/:id', updateOneUserBackend);
-// router.delete('/torol/:id', deleteOneUserBackend);
+router.get('/', getNewCar);
+router.post('/', pictureUploader, postNewCar);
 
 module.exports = router;

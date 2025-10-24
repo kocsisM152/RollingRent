@@ -1,20 +1,20 @@
 const express = require('express');
+const pictureDeleter = require('../middlewares/pictureDeleteFromCloudinary');
+
 const {
     getAllCarsBackend,
     postCarBackend,
-    getAllUsersBackend,
-    postUserBackend, 
-    getOneUserBackend,
-    deleteOneUserBackend,
-    updateOneUserBackend,
+    getOneCarBackend,
+    deleteOneCarBackend,
+    updateOneCarBackend,
 } = require('../controllers/carControllersBackend');
 
 const router = express.Router();
 
 router.get('/', getAllCarsBackend);
-// router.get('/:id', getOneUserBackend);
+router.get('/:id', getOneCarBackend);
 router.post('/', postCarBackend);
-// router.put('/modosit/:id', updateOneUserBackend);
-// router.delete('/torol/:id', deleteOneUserBackend);
+router.put('/:id', updateOneCarBackend);
+router.delete('/:id', pictureDeleter, deleteOneCarBackend);
 
 module.exports = router;
