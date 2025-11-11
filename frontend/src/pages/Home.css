@@ -1,80 +1,99 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-image: url("https://cdn.wallpapersafari.com/71/51/z3s0a7.jpg"); /* Nissan GTR R35 kép */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* így desktopon gyönyörű */
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    /* background-image: url('https://cdn.wallpapersafari.com/71/51/z3s0a7.jpg');  Nissan GTR R35 kép */
+    /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  */
 }
-
 
 .home-background {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url('https://cdn.wallpapersafari.com/71/51/z3s0a7.jpg'); /* Nissan GTR R35 kép */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 40px;
 
-  /* EZ KELL, HOGY LÁTSZÓDJON A KÉP */
-  min-height: 100vh;
-  width: 100%;
+    /* EZ KELL, HOGY LÁTSZÓDJON A KÉP */
+    height: 100vh;
+    width: 100%;
 }
-
-
 
 /* Sötét overlay, hogy a szöveg kiemelkedjen */
 .home-background::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
 }
 
 /* Menü */
 .menu {
-  margin-top: 40px;
-  z-index: 2;
-  display: flex;
-  gap: 50px;
-  padding: 15px 40px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 14px;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    /* margin-top: 40px; */
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    z-index: 2;
+    display: flex;
+    gap: 50px;
+    /* padding: 15px 40px; */
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    width: 20%;
+    margin: auto;
+}
+
+.menu a {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 3;
+    transition: 0.3s;
+    text-decoration: none;
 }
 
 .menu button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.3rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .menu button:hover {
-  color: cyan;
+    color: cyan;
 }
 
 /* Home szöveg */
 .home-kontener {
-  margin-top: 140px;
-  z-index: 2;
-  color: white;
-  font-size: 3rem;
-  font-weight: 700;
-  padding: 40px 120px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 22px;
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.22);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
-  transition: 0.3s;
+    margin-top: 140px;
+    margin-left: 60px;
+    z-index: 2;
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    padding: 40px 120px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 22px;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    transition: 0.3s;
+    width: 60%;
 }
 
 .home-kontener:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 45px rgba(0, 255, 255, 0.45);
+    transform: scale(1.06);
+    box-shadow: 0 0 45px rgba(0, 255, 255, 0.45);
 }

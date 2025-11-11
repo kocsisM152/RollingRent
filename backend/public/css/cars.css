@@ -92,7 +92,7 @@ h4 {
     width: 45%;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
     width: 18px;
     height: 18px;
 }
@@ -198,7 +198,8 @@ img {
         align-items: center;
     }
 
-    #szurok, #kocsik {
+    #szurok,
+    #kocsik {
         width: 100%;
     }
 

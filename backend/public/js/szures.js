@@ -1,21 +1,38 @@
-let markak = ['Audi', 'BMW', 'Chevrolet', 'Ferrari', 'Lamborghini'];
+let markak = [
+    'Audi',
+    'BMW',
+    'Chevrolet',
+    'Ferrari',
+    'Lamborghini',
+    'Nissan',
+    'Koenigsegg',
+    'Opel',
+    'Fiat',
+    'Mitsubishi',
+    'Honda',
+    'Porsche',
+    'Maseratti',
+    'Jaguar',
+    'Bugatti',
+    'Mercedes',
+];
 let kedvezmenyek = [0, 10, 20, 30];
 let belsoZsanerek = document.querySelector('#belso-zsanerek');
 let belsoKedvezmenyek = document.querySelector('#belso-kedvezmenyek');
 let zsanerMind = document.querySelector('#zsaner-mind');
 let kedvezmenyMind = document.querySelector('#kedvezmeny-mind');
 
-zsanerMind.addEventListener('click', () => {
-    if (belsoZsanerek.style.display === 'flex')
-        belsoZsanerek.style.display = 'none';
-    else belsoZsanerek.style.display = 'flex';
-});
+// zsanerMind.addEventListener('click', () => {
+//     if (belsoZsanerek.style.display === 'flex')
+//         belsoZsanerek.style.display = 'none';
+//     else belsoZsanerek.style.display = 'flex';
+// });
 
-kedvezmenyMind.addEventListener('click', () => {
-    if (belsoKedvezmenyek.style.display === 'flex')
-        belsoKedvezmenyek.style.display = 'none';
-    else belsoKedvezmenyek.style.display = 'flex';
-});
+// kedvezmenyMind.addEventListener('click', () => {
+//     if (belsoKedvezmenyek.style.display === 'flex')
+//         belsoKedvezmenyek.style.display = 'none';
+//     else belsoKedvezmenyek.style.display = 'flex';
+// });
 
 if (!zsanerMind.checked) {
 }
