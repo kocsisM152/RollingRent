@@ -1,11 +1,77 @@
-.kocsi-kepek {
-    display: grid;
-    gap: 1em;
-    grid-template-columns: repeat(3, 1fr);
+.kocsi-kep {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1rem;
+  transition: all 0.3s ease;
+  max-width: 360px;
 }
 
 .kocsi-kep img {
-    height: 300px;
-    object-fit: cover;
-    width: 100%;
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
 }
+
+.kocsi-kep {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1rem;
+  transition: all 0.3s ease;
+  max-width: 360px;
+}
+
+.kocsi-kep:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.kocsi-kep h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #d4af37;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+/* 
+
+.kocsi-kepek {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.kocsi-kep {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.kocsi-kep img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.kocsi-kep:hover img {
+  transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+  .kocsi {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .kocsi h1 {
+    font-size: 1.2rem;
+  }
+} */

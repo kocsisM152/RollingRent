@@ -78,7 +78,7 @@ body {
 /* Home szöveg */
 .home-kontener {
     margin-top: 140px;
-    margin-left: 60px;
+    margin-left: 220px;
     z-index: 2;
     color: white;
     font-size: 3rem;
@@ -91,6 +91,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
     transition: 0.3s;
     width: 60%;
+    text-align: center;
 }
 
 .home-kontener:hover {
