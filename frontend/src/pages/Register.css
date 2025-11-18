@@ -1,0 +1,126 @@
+/* Register.css - Modern, Kontrasztos Stílus a Regisztrációs űrlaphoz */
+
+/* Akcentusszín definíciója (élénk kék) */
+:root {
+    --accent-color: #2622ff; 
+    --hover-color: #19d8e6; /* Világosabb kék/cián hover effektus */
+}
+
+/* -- Globális konténer a középre igazításhoz -- */
+.register-kontener {
+    /* Mély sötétkék háttér */
+    background-color: #1c1c2b; 
+    color: #f0f0f0; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    padding-top: 50px; 
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* -- Regisztráció címsor (h1) a doboz felett -- */
+.register-kontener h1 {
+    font-size: 2.4em; 
+    color: #ffffff;
+    margin-bottom: 30px; 
+    font-weight: 800; 
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* -- Regisztrációs Kártya (form) stílusa -- */
+.register-kontener > form {
+    /* Világosabb szürke/sötétkék háttér */
+    background-color: #262638; 
+    padding: 45px 40px; 
+    border-radius: 20px; 
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6); 
+    width: 100%;
+    max-width: 420px; /* Szélesebb a több mező miatt */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.register-kontener > form:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* -- Táblázat és cellák (a függőleges elrendezéshez szükséges stílusok) -- */
+.register-kontener table { width: 100%; border-collapse: collapse; }
+/* Kisebb margó a több mező miatt, hogy beférjen */
+.register-kontener table tr { display: block; margin-bottom: 20px; } 
+.register-kontener table td { display: block; padding: 0; width: 100%; }
+
+/* -- Címkék (Label) -- */
+.register-kontener label {
+    display: block; 
+    font-weight: 600;
+    color: #c9c9d9; 
+    margin-bottom: 8px;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: left;
+}
+
+/* -- Beviteli mezők (Input) -- */
+.register-kontener input[type="text"],
+.register-kontener input[type="email"],
+.register-kontener input[type="password"] {
+    width: 100%;
+    padding: 12px 10px; 
+    border: none; 
+    border-bottom: 1px solid #4a4a6b; 
+    background-color: transparent; 
+    color: #fff; 
+    font-size: 1.1em;
+    transition: border-bottom-color 0.3s, background-color 0.3s;
+    box-sizing: border-box; 
+}
+
+.register-kontener input:focus {
+    /* Kék fókusz jelzés */
+    border-bottom-color: var(--accent-color); 
+    background-color: #33334c; 
+    outline: none;
+}
+
+/* -- Gomb stílusa -- */
+.register-kontener table tr:last-child {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.register-kontener table tr:last-child td {
+    text-align: center;
+    width: 100%;
+}
+
+.register-kontener button {
+    width: 100%;
+    padding: 16px;
+    /* Kék gomb */
+    background-color: var(--accent-color); 
+    color: white; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s;
+}
+
+.register-kontener button:hover {
+    /* Világosabb kék hover */
+    background-color: var(--hover-color); 
+    box-shadow: 0 6px 20px rgba(38, 34, 255, 0.5); 
+}
+
+.register-kontener button:active {
+    transform: translateY(3px);
+}

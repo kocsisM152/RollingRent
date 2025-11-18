@@ -1,0 +1,120 @@
+/* Login.css - Kontrasztos, Modern Kocka és Felirat Stílus */
+
+/* Akcentusszín definíciója (narancs/piros) */
+:root {
+    --accent-color: #2622ff; /* Mély narancssárga/terracotta */
+}
+
+/* -- Globális konténer a középre igazításhoz -- */
+.login-kontener {
+    /* Mély sötétkék háttér */
+    background-color: #1c1c2b; 
+    color: #f0f0f0; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    padding-top: 50px; 
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* -- Bejelentkezés címsor (h1) a doboz felett -- */
+.login-kontener h1 {
+    font-size: 2.4em; /* Kicsit nagyobb felirat */
+    color: #ffffff;
+    margin-bottom: 30px; 
+    font-weight: 800; /* Extra vastag */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    /* Egy diszkrét háttér árnyék a kiemelésért */
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* -- Bejelentkezési Kártya (form) stílusa -- */
+.login-kontener > form {
+    /* Világosabb szürke háttér (magasabb kontraszt) */
+    background-color: #262638; 
+    padding: 45px 40px; /* Nagyobb belső tér */
+    border-radius: 20px; /* Még lekerekítettebb sarkok */
+    /* Kiemelt, puha árnyék */
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6); 
+    width: 100%;
+    max-width: 380px; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    /* Nincs szegély, csak az árnyék a kiemelés */
+}
+
+.login-kontener > form:hover {
+    transform: translateY(-5px); /* Észrevehetőbb lebegő effektus */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* -- Táblázat és cellák (a függőleges elrendezéshez szükséges stílusok) -- */
+.login-kontener table { width: 100%; border-collapse: collapse; }
+.login-kontener table tr { display: block; margin-bottom: 25px; }
+.login-kontener table td { display: block; padding: 0; width: 100%; }
+
+/* -- Címkék (Label) -- */
+.login-kontener label {
+    display: block; 
+    font-weight: 600;
+    color: #c9c9d9; /* Világosabb, olvashatóbb szürke */
+    margin-bottom: 8px;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: left;
+}
+
+/* -- Beviteli mezők (Input) -- */
+.login-kontener input[type="email"],
+.login-kontener input[type="password"] {
+    width: 100%;
+    padding: 12px 10px; 
+    border: none; 
+    /* Vékonyabb alsó vonal */
+    border-bottom: 1px solid #4a4a6b; 
+    background-color: transparent; 
+    color: #fff; 
+    font-size: 1.1em;
+    transition: border-bottom-color 0.3s, background-color 0.3s;
+    box-sizing: border-box; 
+}
+
+.login-kontener input:focus {
+    /* Narancssárga/piros fókusz jelzés */
+    border-bottom-color: var(--accent-color); 
+    background-color: #33334c; /* Enyhe sötét háttér fókuszban */
+    outline: none;
+}
+
+/* -- Gomb stílusa -- */
+.login-kontener table tr:last-child {
+    margin-top: 35px;
+}
+
+.login-kontener button {
+    width: 100%;
+    padding: 16px;
+    /* Narancssárga/piros gomb */
+    background-color: var(--accent-color); 
+    color: white; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s;
+}
+
+.login-kontener button:hover {
+    background-color: #19d8e6; /* Sötétebb narancs hoverre */
+    box-shadow: 0 6px 20px rgba(34, 71, 255, 0.5); 
+}
+
+.login-kontener button:active {
+    transform: translateY(3px);
+}

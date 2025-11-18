@@ -1,0 +1,89 @@
+/* Navbar.css */
+
+/* A navigációs sávot tartalmazó fő konténer */
+.navbar-kontener {
+    /* Sötét háttérszín */
+    background-color: #1e1e1e; 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 15px 30px;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Enyhe alsó szegély/kiemelés */
+    border-bottom: 2px solid #007bff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+/* Linkek (a menüpontok) stílusa */
+.navbar-kontener a {
+    color: #e0e0e0; 
+    text-decoration: none; 
+    margin-right: 25px; 
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 0; /* A hover effektus helye */
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Modern aláhúzás effektus */
+.navbar-kontener a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+.navbar-kontener a:hover:after {
+    width: 100%;
+    left: 0;
+    background: #007bff;
+}
+
+.navbar-kontener a:hover {
+    color: #ffffff; 
+}
+
+/* Regisztráció/Bejelentkezés linkek konténere (ez a két link most egymás mellett van) */
+.login-belso-kontener {
+    display: flex;
+    margin-left: auto; /* Balra tolja a többi elemtől */
+    margin-right: 20px;
+}
+
+/* Kijelentkezés konténer, a jobb szélre tolva */
+.logout-kontener {
+    margin-left: auto; 
+    margin-right: 20px;
+}
+
+/* Admin/Szerver link konténer */
+.backend-nav {
+    margin-left: 20px; /* Hely a kijelentkezés/login konténer után */
+}
+
+/* Kijelentkezés gomb stílusa */
+.logout-kontener button {
+    padding: 8px 15px;
+    background-color: #dc3545; /* Vörös szín a kijelentkezéshez */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95em;
+    transition: background-color 0.3s;
+}
+
+.logout-kontener button:hover {
+    background-color: #c82333;
+}

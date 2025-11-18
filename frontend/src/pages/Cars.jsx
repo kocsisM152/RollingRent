@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Cars.css";
 import Car from "./Car";
+import Navbar from "../components/Navbar";
 
 const Cars = () => {
   const [cars, setCars] = useState([]);
@@ -23,6 +24,7 @@ const Cars = () => {
   }, []);
   return (
     <>
+      <Navbar />
       <h1>Bérelhető autók</h1>
       <div className="kocsik-kontener">
         {cars.map((elem) => {

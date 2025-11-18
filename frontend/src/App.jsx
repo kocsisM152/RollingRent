@@ -4,19 +4,34 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Cars from './pages/Cars';
 import Home from './pages/Home';
+import LeadPage from './pages/LeadPage';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
     return (
         <BrowserRouter>
-            <Navbar />
+            {/* <Navbar /> */}
             <Routes>
                 <Route
                     path="/"
                     element={<Home />}
                 />
                 <Route
+                    path="/lead"
+                    element={<LeadPage />}
+                />
+                <Route
                     path="/cars"
                     element={<Cars />}
+                />
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
+                <Route
+                    path="/register"
+                    element={<Register />}
                 />
             </Routes>
         </BrowserRouter>

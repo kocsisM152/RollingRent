@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div className="home-background">
             <div className="menu">
-                <Link to="/">Főoldal</Link>
+                <Link to="/lead">Főoldal</Link>
                 <Link to="/cars">Autók</Link>
             </div>
 
