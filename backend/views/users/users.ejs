@@ -1,34 +1,74 @@
-<style>
-    nav {
-        background-color: blue;
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-        justify-content: space-between;
-        list-style-type: none;
-    }
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/users/users.css"
+        />
+        <title>Felhasználók</title>
+    </head>
+    <body>
+        <%- include('../nav.ejs') %>
+        <div id="felhasznalo-kontener">
+            <h1>Felhasználók</h1>
+            <div id="felhasznalok-kontener">
+                <% users.forEach(elem => { %>
+                <div class="felhasznalo-egy-kontener">
+                    <table>
+                        <tr>
+                            <td>Név:</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="nev"
+                                    value="<%= elem.nev %>"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    value="<%= elem.email %>"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Admin:</td>
+                            <td>
+                                <label for="admin_igen">Igen</label>
+                                <input type="radio" id="admin_igen"
+                                name="admin_<%= elem.email%>" value="true" <% if
+                                (elem.admin === true) { %> checked <% } %> />
 
-    nav #server-kontener {
-        display: flex;
-        flex-direction: row;
-    }
-
-    nav li a {
-        color: whitesmoke;
-        cursor: pointer;
-        display: inline-block;
-        padding: 1em;
-        text-decoration: none;
-    }
-</style>
-<nav>
-    <div id="server-kontener">
-        <li><a href="/api">Főoldal</a></li>
-        <li><a href="/api/cakes-backend">Torták</a></li>
-        <li><a href="/api/new-cake">Új torta</a></li>
-        <li><a href="/api/users-backend">Felhasználók</a></li>
-    </div>
-    <div id="frontend-kontener">
-        <li><a href="http://localhost:5173">Kliens</a></li>
-    </div>
-</nav>
+                                <label for="admin_nem">Nem</label>
+                                <input type="radio" id="admin_nem"
+                                name="admin_<%= elem.email%>" value="false" <%
+                                if (elem.admin === false) { %> checked <%} %> />
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="felhasznalo-gombok">
+                        <button
+                            onclick="modosit('<%= elem._id %>', '<%= elem.nev %>', '<%= elem.email %>', 'admin_<%= elem.email%>')"
+                        >
+                            Módosítás
+                        </button>
+                        <button onclick="torol('<%= elem._id %>')">
+                            Törlés
+                        </button>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+        <script src="/js/felhasznalok.js"></script>
+    </body>
+</html>

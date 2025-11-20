@@ -1,241 +1,249 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/h1.css">
-    <title>Főoldal</title>
-    <link rel="icon" type="image/x-icon" href="/images/logo.png">
-</head>
-<body>
-    <%- include('nav.ejs') %>
-    <div id="main-kontener">
-        <h1>RollingRent</h1>
-    </div>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RollingRent | Főoldal</title>
-    <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    
-    <style>
-        /* === Alap stílusok === */
-        * {
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>RollingRent | Főoldal</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="/images/logo.png"
+        />
 
-        body {
-            background-color: #f5f5f5;
-            color: #222;
-        }
+        <style>
+            /* === Alap stílusok === */
+            * {
+                box-sizing: border-box;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                    'Helvetica Neue', sans-serif;
+                margin: 0;
+                padding: 0;
+            }
 
-        /* === Navigáció === */
-        #nav-kontener {
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5em;
-            padding: 1em 0;
-            list-style-type: none;
-        }
+            body {
+                background-color: #f5f5f5;
+                color: #222;
+            }
 
-        #nav-kontener li {
-            list-style: none;
-        }
-
-        #nav-kontener li a {
-            display: inline-block;
-            font-size: 1.3em;
-            padding: 0.5em 1em;
-            text-decoration: none;
-            color: whitesmoke;
-            border-radius: 6px;
-            transition: background-color 0.3s, transform 0.3s ease;
-        }
-
-        #nav-kontener li a:hover {
-            background-color: gray;
-            transform: scale(1.1);
-        }
-
-        /* === Hero szekció === */
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
-                        url('/images/hero-car.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-            text-align: center;
-            padding: 2em;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            letter-spacing: 2px;
-            margin-bottom: 0.3em;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            max-width: 700px;
-            margin-bottom: 2em;
-        }
-
-        .hero .buttons {
-            display: flex;
-            gap: 1em;
-            flex-wrap: wrap;
-        }
-
-        .hero a {
-            background-color: #ff4d00;
-            color: white;
-            text-decoration: none;
-            padding: 0.8em 1.8em;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .hero a:hover {
-            background-color: #ff7133;
-            transform: translateY(-3px);
-        }
-
-        .hero a.outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        /* === Szolgáltatás szekció === */
-        .services {
-            background-color: white;
-            padding: 5em 2em;
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 2.5em;
-            margin-bottom: 1.5em;
-        }
-
-        .service-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2em;
-        }
-
-        .card {
-            background-color: #fafafa;
-            width: 300px;
-            padding: 2em;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: #ff4d00;
-            margin-bottom: 0.5em;
-        }
-
-        .card p {
-            color: #555;
-        }
-
-        /* === Láb (Footer) === */
-        footer {
-            background-color: #000;
-            color: white;
-            text-align: center;
-            padding: 1.5em 0;
-            margin-top: 3em;
-            font-size: 0.9em;
-        }
-
-        /* === Mobil nézet === */
-        @media (max-width: 768px) {
+            /* === Navigáció === */
             #nav-kontener {
-                flex-wrap: wrap;
-                gap: 1.5em;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5em;
+                padding: 1em 0;
+                list-style-type: none;
+            }
+
+            #nav-kontener li {
+                list-style: none;
+            }
+
+            #nav-kontener li a {
+                display: inline-block;
+                font-size: 1.3em;
+                padding: 0.5em 1em;
+                text-decoration: none;
+                color: whitesmoke;
+                border-radius: 6px;
+                transition: background-color 0.3s, transform 0.3s ease;
+            }
+
+            #nav-kontener li a:hover {
+                background-color: gray;
+                transform: scale(1.1);
+            }
+
+            /* === Hero szekció === */
+            .hero {
+                height: 90vh;
+                background: linear-gradient(
+                        rgba(0, 0, 0, 0.55),
+                        rgba(0, 0, 0, 0.65)
+                    ),
+                    url('/images/hero-car.jpg') center/cover no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                color: white;
+                text-align: center;
+                padding: 2em;
             }
 
             .hero h1 {
-                font-size: 2.5em;
+                font-size: 4em;
+                letter-spacing: 2px;
+                margin-bottom: 0.3em;
+                font-weight: 700;
             }
 
             .hero p {
-                font-size: 1.1em;
+                font-size: 1.5em;
+                max-width: 700px;
+                margin-bottom: 2em;
+            }
+
+            .hero .buttons {
+                display: flex;
+                gap: 1em;
+                flex-wrap: wrap;
+            }
+
+            .hero a {
+                background-color: #ff4d00;
+                color: white;
+                text-decoration: none;
+                padding: 0.8em 1.8em;
+                border-radius: 8px;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            .hero a:hover {
+                background-color: #ff7133;
+                transform: translateY(-3px);
+            }
+
+            .hero a.outline {
+                background: transparent;
+                border: 2px solid white;
+            }
+
+            /* === Szolgáltatás szekció === */
+            .services {
+                background-color: white;
+                padding: 5em 2em;
+                text-align: center;
+            }
+
+            .services h2 {
+                font-size: 2.5em;
+                margin-bottom: 1.5em;
             }
 
             .service-cards {
-                flex-direction: column;
-                align-items: center;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2em;
             }
-        }
-    </style>
-</head>
 
-<body>
-    <div id="nav-kontener">
-        <li><a href="/api">Főoldal</a></li>
-        <li><a href="/api/users-backend">Felhasználók</a></li>
-        <li><a href="/api/cars-backend">Autók</a></li>
-        <li><a href="/api/new-car">Új kocsi felvétele</a></li>
-        <li><a href="http://localhost:5173">Kliens</a></li>
-    </div>
+            .card {
+                background-color: #fafafa;
+                width: 300px;
+                padding: 2em;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
 
-    <section class="hero">
-        <h1>RollingRent</h1>
-        <p>Bérelj autót gyorsan, egyszerűen és megbízhatóan!  
-        A RollingRent elhozza neked a szabadság érzését, kormány mögött.</p>
+            .card:hover {
+                transform: translateY(-5px);
+            }
 
-        <div class="buttons">
-            <a href="/api/cars-backend">Autók megtekintése</a>
-            <a href="/api/new-car" class="outline">Új autó hozzáadása</a>
+            .card h3 {
+                color: #ff4d00;
+                margin-bottom: 0.5em;
+            }
+
+            .card p {
+                color: #555;
+            }
+
+            /* === Láb (Footer) === */
+            footer {
+                background-color: #000;
+                color: white;
+                text-align: center;
+                padding: 1.5em 0;
+                margin-top: 3em;
+                font-size: 0.9em;
+            }
+
+            /* === Mobil nézet === */
+            @media (max-width: 768px) {
+                #nav-kontener {
+                    flex-wrap: wrap;
+                    gap: 1.5em;
+                }
+
+                .hero h1 {
+                    font-size: 2.5em;
+                }
+
+                .hero p {
+                    font-size: 1.1em;
+                }
+
+                .service-cards {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="nav-kontener">
+            <li><a href="/api">Főoldal</a></li>
+            <li><a href="/api/users-backend">Felhasználók</a></li>
+            <li><a href="/api/cars-backend">Autók</a></li>
+            <li><a href="/api/new-car">Új kocsi felvétele</a></li>
+            <li><a href="http://localhost:5173">Kliens</a></li>
         </div>
-    </section>
 
-    <section class="services">
-        <h2>Miért minket válassz?</h2>
-        <div class="service-cards">
-            <div class="card">
-                <h3>🔑 Gyors ügyintézés</h3>
-                <p>Online foglalás, percek alatt. Nincs sorban állás, nincs papírmunka.</p>
+        <section class="hero">
+            <h1>RollingRent</h1>
+            <p>
+                Bérelj autót gyorsan, egyszerűen és megbízhatóan! A RollingRent
+                elhozza neked a szabadság érzését, kormány mögött.
+            </p>
+
+            <div class="buttons">
+                <a href="/api/cars-backend">Autók megtekintése</a>
+                <a
+                    href="/api/new-car"
+                    class="outline"
+                    >Új autó hozzáadása</a
+                >
             </div>
+        </section>
 
-            <div class="card">
-                <h3>🚗 Megbízható autók</h3>
-                <p>Modern, rendszeresen karbantartott járművekkel biztos utazás.</p>
+        <section class="services">
+            <h2>Miért minket válassz?</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <h3>🔑 Gyors ügyintézés</h3>
+                    <p>
+                        Online foglalás, percek alatt. Nincs sorban állás, nincs
+                        papírmunka.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>🚗 Megbízható autók</h3>
+                    <p>
+                        Modern, rendszeresen karbantartott járművekkel biztos
+                        utazás.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>💰 Kedvező árak</h3>
+                    <p>
+                        Kedvezményes bérlések rövid és hosszú távra, rejtett
+                        díjak nélkül.
+                    </p>
+                </div>
             </div>
+        </section>
 
-            <div class="card">
-                <h3>💰 Kedvező árak</h3>
-                <p>Kedvezményes bérlések rövid és hosszú távra, rejtett díjak nélkül.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        © 2025 RollingRent | Minden jog fenntartva.
-    </footer>
-</body>
+        <footer>© 2025 RollingRent | Minden jog fenntartva.</footer>
+    </body>
 </html>
-
