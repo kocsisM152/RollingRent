@@ -11,7 +11,7 @@ exports.getAllUsersBackend = async (req, res) => {
     }
 };
 
-export const updateOneUserBackend = async (req, res) => {
+exports.updateOneUserBackend = async (req, res) => {
     try {
         const { id, nev, email, admin } = req.body;
         const user = await User.findByIdAndUpdate(
@@ -27,7 +27,7 @@ export const updateOneUserBackend = async (req, res) => {
     }
 };
 
-export const deleteOneUserBackend = async (req, res) => {
+exports.deleteOneUserBackend = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByIdAndDelete({ _id: id });

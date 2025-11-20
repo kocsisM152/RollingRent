@@ -4,18 +4,18 @@ import { useEffect, useState } from 'react';
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const ertek = localStorage.getItem('isLoggedIn');
         const user = JSON.parse(localStorage.getItem('user'));
         setIsLoggedIn(ertek === '1');
         if (user) setIsAdmin(user.admin);
-        else setIsAdmin(true);
+        else setIsAdmin(false);
     }, []);
 
     function kijelentkezes() {
-        window.alert('Tényleg ki szeretnél jelentkezni?')
+        window.alert('Tényleg ki szeretnél jelentkezni?');
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('user');
         localStorage.setItem('isLoggedIn', 1);
@@ -23,30 +23,28 @@ const Navbar = () => {
     }
 
     return (
-        <div className='navbar-kontener'>
+        <div className="navbar-kontener">
             <Link to="/">Nyitó</Link>
             <Link to="/lead">Főoldal</Link>
             <Link to="/cars">Autók</Link>
-            {isLoggedIn ?
-                <div className='login-belso-kontener'>
+            {isLoggedIn ? (
+                <div className="login-belso-kontener">
                     <Link to="/register">Regisztráció</Link>
                     <Link to="/login">Bejelentkezés</Link>
                 </div>
-                : 
-                <div className='logout-kontener'>
+            ) : (
+                <div className="logout-kontener">
                     <button onClick={kijelentkezes}>Kijelentkezés</button>
                 </div>
-            }
-            {isAdmin ?
+            )}
+            {isAdmin ? (
                 <div className="backend-nav">
                     <Link to="http://localhost:3500/api">Szerver</Link>
                 </div>
-                
-                :
+            ) : (
                 <div className="backend-nav"></div>
-            }
+            )}
         </div>
-
     );
 };
 
