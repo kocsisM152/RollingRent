@@ -1,47 +1,74 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"
-    />
-    <link
-     rel="stylesheet" 
-     href="/css/users.css"
-     />
-    <title>Felhasználók</title>
-</head>
-<body>
-    <%- include('nav.ejs') %>
-    <div id="users-kontener">
-        <h1>Felhasználók</h1>
-        <div class="user-kontener">
-            <h1>
-                Név:
-                <input
-                 type="text"
-                 id="nev"
-                 value="<%= userBackend.nev %>"
-                 />
-            </h1>
-            <p>
-                Státusz:
-                <select id="statusz">
-                    <option value=""></option>
-                    <option value="olvasó">olvasó</option>
-                    <option value="szerkesztő">szerkesztő</option>
-                    <option value="admin">admin</option>
-                </select>
-                <%= userBackend.statusz %>
-            </p>
-            <button onclick="szerkesztes('<%= userBackend._id %> ')">
-                Szerkesztés
-            </button>
-            <button onclick="torles('<%= userBackend._id %>')">
-                Törlés
-            </button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/users/users.css"
+        />
+        <title>Felhasználók</title>
+    </head>
+    <body>
+        <%- include('../nav.ejs') %>
+        <div id="felhasznalo-kontener">
+            <h1>Felhasználók</h1>
+            <div id="felhasznalok-kontener">
+                <% users.forEach(elem => { %>
+                <div class="felhasznalo-egy-kontener">
+                    <table>
+                        <tr>
+                            <td>Név:</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="nev"
+                                    value="<%= elem.nev %>"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    value="<%= elem.email %>"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Admin:</td>
+                            <td>
+                                <label for="admin_igen">Igen</label>
+                                <input type="radio" id="admin_igen"
+                                name="admin_<%= elem.email%>" value="true" <% if
+                                (elem.admin === true) { %> checked <% } %> />
+
+                                <label for="admin_nem">Nem</label>
+                                <input type="radio" id="admin_nem"
+                                name="admin_<%= elem.email%>" value="false" <%
+                                if (elem.admin === false) { %> checked <%} %> />
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="felhasznalo-gombok">
+                        <button
+                            onclick="modosit('<%= elem._id %>', '<%= elem.nev %>', '<%= elem.email %>', 'admin_<%= elem.email%>')"
+                        >
+                            Módosítás
+                        </button>
+                        <button onclick="torol('<%= elem._id %>')">
+                            Törlés
+                        </button>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
         </div>
-        <script src="/js/users-backend.js"></script>
-    </div>
-    
-</body>
+        <script src="/js/felhasznalok.js"></script>
+    </body>
 </html>
