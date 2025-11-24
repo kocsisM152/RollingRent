@@ -1,4 +1,241 @@
-.lead-kontener {
+/* /* .lead-kontener {
     color: white;
     margin-top: 10em;
+} */
+
+/* .lead-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.hero-section {
+    background-color: #f4f4f4;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.about-section {
+    padding: 30px 20px;
+    background-color: #fff;
+}
+
+.about-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.image-gallery {
+    padding: 30px 20px;
+    background-color: #f9f9f9;
+}
+
+.image-gallery h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.image-container img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.features-section {
+    padding: 30px 20px;
+    background-color: #fff;
+}
+
+.features-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.features-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features-section li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+ */
+/* General page styles */
+.lead-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1, h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.411), rgba(145, 145, 145, 0.7)), url('your-hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: rgb(253, 253, 253);
+    text-align: center;
+    padding: 100px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* About Section */
+.about-section {
+    padding: 50px 20px;
+    /* background-color: #494747; */
+    background: linear-gradient(135deg, rgba(105, 105, 105, 0.411), rgba(153, 152, 151, 0.7)), url('your-hero-image.jpg');
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Image Gallery */
+.image-gallery {
+    padding: 50px 20px;
+    /* background-color: #f4f4f4; */
+    background: linear-gradient(135deg, rgba(66, 66, 66, 0.411), rgba(153, 152, 151, 0.7)), url('your-hero-image.jpg');
+    text-align: center;
+}
+
+.image-gallery h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.image-container img {
+    width: 250px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.features-section {
+    padding: 50px 20px;
+    /* background-color: #fff; */
+    background: linear-gradient(135deg, rgba(31, 31, 31, 0.411), rgba(153, 152, 151, 0.7)), url('your-hero-image.jpg');
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.features-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features-section li {
+    font-size: 1.2em;
+    margin: 15px 0;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 20px;
+    }
+
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container img {
+        width: 90%;
+        height: auto;
+    }
 }
