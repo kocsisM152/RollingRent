@@ -1,0 +1,136 @@
+/* Alap stílusok és betűtípus */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff; /* Halvány háttér */
+    color: #333;
+}
+
+#felhasznalo-kontener {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Kártya alapú, Flexbox/Grid elrendezés a felhasználóknak */
+#felhasznalok-kontener {
+    display: grid;
+    /* 2 vagy 3 oszlop, ha van elég hely, egyébként 1 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.felhasznalo-kartya {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.felhasznalo-kartya:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Adat beviteli mezők stílusa */
+.adat-sor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.adat-sor label {
+    font-weight: bold;
+    color: #34495e;
+    flex-basis: 80px; /* Fix szélesség a címkéknek */
+}
+
+.modern-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.modern-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+/* Radio gombok stílusa (Admin Jog) */
+.radio-csoport {
+    align-items: flex-start;
+}
+
+.radio-opciok {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none; /* Ne lehessen kijelölni a szöveget */
+}
+
+.radio-label input[type="radio"] {
+    /* Az alap radio gombot modernizáljuk a CSS-ben, vagy eltüntetjük */
+    margin-right: 5px;
+    /* Itt lehetne a saját stílusú radio gombot megcsinálni */
+}
+
+/* Gombok stílusa */
+.felhasznalo-gombok-kontener {
+    display: flex;
+    justify-content: flex-end; /* Jobb oldalra igazítás */
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ecf0f1;
+}
+
+.gomb {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.gomb:active {
+    transform: scale(0.98);
+}
+
+.modosit-gomb {
+    background-color: #2ecc71; /* Zöldes szín a módosításnak */
+    color: white;
+}
+
+.modosit-gomb:hover {
+    background-color: #27ae60;
+}
+
+.torol-gomb {
+    background-color: #e74c3c; /* Pirosas szín a törlésnek */
+    color: white;
+}
+
+.torol-gomb:hover {
+    background-color: #c0392b;
+}

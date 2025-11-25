@@ -1,74 +1,89 @@
 <!DOCTYPE html>
 <html lang="hu">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
-        <link
-            rel="stylesheet"
-            href="/css/users/users.css"
-        />
-        <title>Felhasználók</title>
-    </head>
-    <body>
-        <%- include('../nav.ejs') %>
-        <div id="felhasznalo-kontener">
-            <h1>Felhasználók</h1>
-            <div id="felhasznalok-kontener">
-                <% users.forEach(elem => { %>
-                <div class="felhasznalo-egy-kontener">
-                    <table>
-                        <tr>
-                            <td>Név:</td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="nev"
-                                    value="<%= elem.nev %>"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>E-mail:</td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="email"
-                                    value="<%= elem.email %>"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Admin:</td>
-                            <td>
-                                <label for="admin_igen">Igen</label>
-                                <input type="radio" id="admin_igen"
-                                name="admin_<%= elem.email%>" value="true" <% if
-                                (elem.admin === true) { %> checked <% } %> />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/users.css" />
+    <title>Felhasználók | Admin</title>
+</head>
+<body>
+    <%- include('../nav.ejs') %>
 
-                                <label for="admin_nem">Nem</label>
-                                <input type="radio" id="admin_nem"
-                                name="admin_<%= elem.email%>" value="false" <%
-                                if (elem.admin === false) { %> checked <%} %> />
-                            </td>
-                        </tr>
-                    </table>
-                    <div id="felhasznalo-gombok">
-                        <button
-                            onclick="modosit('<%= elem._id %>', '<%= elem.nev %>', '<%= elem.email %>', 'admin_<%= elem.email%>')"
-                        >
-                            Módosítás
-                        </button>
-                        <button onclick="torol('<%= elem._id %>')">
-                            Törlés
-                        </button>
+    <div id="felhasznalo-kontener">
+        <h1>👥 Felhasználók Kezelése</h1>
+        
+        <div id="felhasznalok-kontener">
+            <% users.forEach(elem => { %>
+                
+            <div class="felhasznalo-kartya">
+                <form id="form_<%= elem._id %>">
+                    
+                    <div class="felhasznalo-adatok-csoport">
+                        
+                        <div class="adat-sor">
+                            <label for="nev_<%= elem._id %>">Név:</label>
+                            <input
+                                type="text"
+                                class="modern-input"
+                                id="nev_<%= elem._id %>"
+                                value="<%= elem.nev %>"
+                                required
+                            />
+                        </div>
+
+                        <div class="adat-sor">
+                            <label for="email_<%= elem._id %>">E-mail:</label>
+                            <input
+                                type="email"
+                                class="modern-input"
+                                id="email_<%= elem._id %>"
+                                value="<%= elem.email %>"
+                                required
+                            />
+                        </div>
+                        
+                        <div class="adat-sor radio-csoport">
+                            <label>Admin Jog:</label>
+                            <div class="radio-opciok">
+                                <label class="radio-label" for="admin_igen_<%= elem._id %>">
+                                    <input type="radio" id="admin_igen_<%= elem._id %>"
+                                    name="admin_<%= elem._id %>" value="true" 
+                                    <% if (elem.admin === true) { %> checked <% } %> />
+                                    Igen
+                                </label>
+
+                                <label class="radio-label" for="admin_nem_<%= elem._id %>">
+                                    <input type="radio" id="admin_nem_<%= elem._id %>"
+                                    name="admin_<%= elem._id %>" value="false" 
+                                    <% if (elem.admin === false) { %> checked <%} %> />
+                                    Nem
+                                </label>
+                            </div>
+                        </div>
+                        
                     </div>
+                </form>
+
+                <div class="felhasznalo-gombok-kontener">
+                    <button
+                        class="gomb modosit-gomb"
+                        type="button"
+                        onclick="modosit('<%= elem._id %>', 'nev_<%= elem._id %>', 'email_<%= elem._id %>', 'admin_<%= elem._id %>')"
+                    >
+                        💾 Módosítás
+                    </button>
+                    <button 
+                        class="gomb torol-gomb" 
+                        type="button" 
+                        onclick="torol('<%= elem._id %>')"
+                    >
+                        🗑️ Törlés
+                    </button>
                 </div>
-                <% }) %>
             </div>
+            <% }) %>
         </div>
-        <script src="/js/felhasznalok.js"></script>
-    </body>
+    </div>
+    <script src="/js/felhasznalok.js"></script>
+</body>
 </html>

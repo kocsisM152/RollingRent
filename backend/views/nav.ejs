@@ -8,7 +8,7 @@
         padding: 0px;
     }
 
-    #nav-kontener {
+    /* #nav-kontener {
         background-color: black;
         display: flex;
         flex-direction: row;
@@ -32,7 +32,35 @@
     a:hover {
         background-color: gray;
         transform: scale(1.1);
-    }
+    } */
+     #nav-kontener {
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5em;
+                padding: 1em 0;
+                list-style-type: none;
+            }
+
+            #nav-kontener li {
+                list-style: none;
+            }
+
+            #nav-kontener li a {
+                display: inline-block;
+                font-size: 1.3em;
+                padding: 0.5em 1em;
+                text-decoration: none;
+                color: whitesmoke;
+                border-radius: 6px;
+                transition: background-color 0.3s, transform 0.3s ease;
+            }
+
+            #nav-kontener li a:hover {
+                background-color: gray;
+                transform: scale(1.1);
+            }
 </style>
 
 <div id="nav-kontener">

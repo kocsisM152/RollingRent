@@ -1,32 +1,150 @@
-@import url('./alap.css');
-/* @import url('./nav.css'); */
+/* Alap stílusok */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6; /* Halvány háttér az egész oldalnak */
+    color: #333;
+    margin: 0;
+    padding: 0; /* Navigáció miatt 0-ra állítva */
+}
 
+/* Fő konténer: Ez most egy letisztult "lap" lesz */
 #new-car-kontener {
-    margin: auto;
-    width: 80%;
+    margin: 20px; /* Egy kis térköz az oldal szélétől */
+    padding: 30px 40px; /* Belső térköz (fent/lent, jobb/bal) */
+    background-color: #ffffff; /* Fehér háttér az űrlapnak */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Modern, enyhe árnyék */
 }
 
-.konyv {
-    border: 1px solid #999;
-    padding: 0.5em;
+h1 {
+    color: #2c3e50;
+    text-align: left;
+    border-bottom: 4px solid #3498db; /* Kiemelő csík */
+    padding-bottom: 15px;
+    margin-top: 0; /* Eltávolítja a felesleges felső margót */
+    margin-bottom: 40px;
+    font-size: 2.2em; /* Jól látható cím */
 }
 
-#new-car-kontener td {
-    padding: 0.5em;
+/* * A CSS GRID varázslat:
+ * Ez rendezi el a mezőket egy reszponzív rácsba.
+ */
+#form-grid {
+    display: grid;
+    
+    /* * Nagy képernyőn 3 oszlopot hoz létre.
+     * Minden oszlop egyenlő arányban (1fr) osztozik a helyen.
+     */
+    grid-template-columns: repeat(3, 1fr);
+    
+    /* Térköz az oszlopok és sorok között */
+    gap: 30px; 
+    
+    padding-bottom: 20px;
 }
 
-#new-car-kontener input {
-    font-size: larger;
-    width: 400px;
+/* Egy űrlap-csoport (címke + beviteli mező) */
+.form-group {
+    display: flex;
+    flex-direction: column; /* A címke a mező felett legyen */
 }
 
-#new-car-kontener button {
-    color: whitesmoke;
-    background-color: green;
+/* Teljes szélességű elemek (Leírás és Gomb) */
+.form-group-full {
+    grid-column: 1 / -1; /* Átfogja az összes oszlopot (1-től az utolsóig) */
+}
+
+.form-group label {
+    font-weight: 600; /* Félkövér címke */
+    color: #34495e;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Modern Input stílus (input, select, textarea) */
+.modern-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Fontos, hogy a padding ne rontsa el az elrendezést */
+    font-size: 1em;
+}
+
+.modern-input:focus {
+    border-color: #3498db; /* Kiemelés fókusz esetén */
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    outline: none;
+    background-color: #f9feff;
+}
+
+textarea.modern-input {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Gomb stílus */
+.form-group-button {
+    margin-top: 20px;
+    text-align: left; /* A gomb balra igazítása */
+}
+
+.gomb {
+    padding: 14px 35px; /* Kényelmes méret */
     border: none;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-        sans-serif;
-    padding: 1em;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    width: auto; /* A gomb ne legyen feleslegesen széles */
 }
 
+.letrehoz-gomb {
+    background-color: #2ecc71; /* Zöld */
+    color: white;
+}
+
+.letrehoz-gomb:hover {
+    background-color: #27ae60; /* Sötétebb zöld hover esetén */
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+}
+
+.gomb:active {
+    transform: scale(0.98); /* Klikkelés effektus */
+}
+
+/* === RESZPONZIVITÁS === */
+
+/* Közepes képernyők (pl. tabletek) - 2 oszlop */
+@media (max-width: 1024px) {
+    #form-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 oszlopra vált */
+    }
+    #new-car-kontener {
+        margin: 15px;
+        padding: 25px;
+    }
+}
+
+/* Kis képernyők (pl. mobilok) - 1 oszlop */
+@media (max-width: 700px) {
+    #form-grid {
+        grid-template-columns: 1fr; /* 1 oszlopra vált */
+        gap: 20px;
+    }
+    #new-car-kontener {
+        margin: 0;
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .gomb {
+        width: 100%; /* Mobilon a gomb legyen teljes szélességű */
+    }
+}
