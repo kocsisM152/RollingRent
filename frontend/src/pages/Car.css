@@ -1,3 +1,10 @@
+.kocsi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* FŐ KÁRTYA / ALAPKÉP + ADATOK */
 .kocsi-kep {
   background: #fff;
   border-radius: 16px;
@@ -6,22 +13,14 @@
   margin: 1rem;
   transition: all 0.3s ease;
   max-width: 360px;
+  width: 100%;
 }
 
 .kocsi-kep img {
   height: 300px;
   object-fit: cover;
   width: 100%;
-}
-
-.kocsi-kep {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  margin: 1rem;
-  transition: all 0.3s ease;
-  max-width: 360px;
+  border-radius: 12px;
 }
 
 .kocsi-kep:hover {
@@ -29,15 +28,60 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.kocsi-kep h1 {
-  font-size: 1.4rem;
+.kocsi-kep h1,
+.kocsi-kep p {
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #d4af37;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+/* --- GALÉRIA --- */
+
+.kocsi-kepek-galeria {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.kocsi-kepek-galeria h2 {
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid #d4af37;
   display: inline-block;
   padding-bottom: 0.3rem;
 }
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.kocsi-kep p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #d4af37;
+  display: block; /* inline-block helyett block */
+  padding-bottom: 0.3rem;
+}
+
 
 /* 
 

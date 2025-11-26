@@ -2,19 +2,21 @@ import "./Car.css";
 
 const Car = ({ kocsi }) => {
   return (
-    <div className="kocsi">
-      <div className="kocsi-kep" key={kocsi._id}>
-      <h1>Típus: {kocsi.tipus}</h1>
-        <img src={kocsi.kepek[0]} />
-        <h1>Részletek:</h1>
+    <div className="kocsi" key={kocsi._id}>
+      <div className="kocsi-kep">
+        <h1>Típus: {kocsi.tipus}</h1>
+        <img src={kocsi.kepek?.[0]} alt={kocsi.tipus} />
+
+        <h2>Részletek:</h2>
+        <p>Származási ország: {kocsi.szarmazasiorszag}</p>
+        <p>Évjárat: {kocsi.evjarat}</p>
+        <p>Üzemanyag: {kocsi.uzemanyag}</p>
+        <p>Váltó: {kocsi.valto}</p>
+        <p>Teljesítmény: {kocsi.teljesitmeny} LE</p>
+        <p>Űrtartalom: {kocsi.motor} cm³</p>
+        <p>Szín: {kocsi.szin}</p>
+        <p>Ár: {kocsi.ar?.toLocaleString()} Ft</p>
       </div>
-      {/* <div className="kocsi-kepek">
-                {kocsi.kepek.map((elem) => {
-                    return (
-                        
-                    );
-                })}
-            </div> */}
     </div>
   );
 };
