@@ -13,7 +13,7 @@ const Car = ({ kocsi }) => {
         <p>Üzemanyag: {kocsi.uzemanyag}</p>
         <p>Váltó: {kocsi.valto}</p>
         <p>Teljesítmény: {kocsi.teljesitmeny} LE</p>
-        <p>Űrtartalom: {kocsi.motor} cm³</p>
+        <p>Űrtartalom: {kocsi.urtartalom} cm³</p>
         <p>Szín: {kocsi.szin}</p>
         <p>Ár: {kocsi.ar?.toLocaleString()} Ft</p>
       </div>

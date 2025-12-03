@@ -14,6 +14,26 @@ const carSchem = new mongoose.Schema(
             type: Number,
             require: true,
         },
+          uzemanyag: {
+            type: String,
+            require: true,
+        },
+          valto: {
+            type: String,
+            require: true,
+        },
+          teljesitmeny: {
+            type: Number,
+            require: true,
+        },
+          urtartalom: {
+            type: Number,
+            require: true,
+        },
+          szin: {
+            type: String,
+            require: true,
+        },
         szarmazasiorszag: {
             type: String,
             require: true,
@@ -29,6 +49,11 @@ const carSchem = new mongoose.Schema(
         kedvezmeny: {
             type: Number,
             require: true,
+        },
+        foglalhatoe: {
+            type: Boolean,
+            require: true,
+            default: true
         },
         kepek: [
             {
