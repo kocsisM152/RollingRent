@@ -1,150 +1,138 @@
-/* Alap stílusok */
+/* Modern, letisztult és prémium stílus – továbbfejlesztett gombok, inputok */
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f6; /* Halvány háttér az egész oldalnak */
-    color: #333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #eef1f3;
+    color: #2c3e50;
     margin: 0;
-    padding: 0; /* Navigáció miatt 0-ra állítva */
+    padding: 0;
 }
 
-/* Fő konténer: Ez most egy letisztult "lap" lesz */
 #new-car-kontener {
-    margin: 20px; /* Egy kis térköz az oldal szélétől */
-    padding: 30px 40px; /* Belső térköz (fent/lent, jobb/bal) */
-    background-color: #ffffff; /* Fehér háttér az űrlapnak */
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Modern, enyhe árnyék */
+    margin: 30px auto;
+    padding: 40px;
+    max-width: 1100px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    animation: fadein 0.4s ease;
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
-    color: #2c3e50;
-    text-align: left;
-    border-bottom: 4px solid #3498db; /* Kiemelő csík */
-    padding-bottom: 15px;
-    margin-top: 0; /* Eltávolítja a felesleges felső margót */
-    margin-bottom: 40px;
-    font-size: 2.2em; /* Jól látható cím */
+    color: #222f3e;
+    font-size: 2.6em;
+    margin: 0 0 35px 0;
+    padding-bottom: 18px;
+    border-bottom: 4px solid #1e90ff;
+    font-weight: 800;
 }
 
-/* * A CSS GRID varázslat:
- * Ez rendezi el a mezőket egy reszponzív rácsba.
- */
 #form-grid {
     display: grid;
-    
-    /* * Nagy képernyőn 3 oszlopot hoz létre.
-     * Minden oszlop egyenlő arányban (1fr) osztozik a helyen.
-     */
-    grid-template-columns: repeat(3, 1fr);
-    
-    /* Térköz az oszlopok és sorok között */
-    gap: 30px; 
-    
-    padding-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px 40px;
 }
 
-/* Egy űrlap-csoport (címke + beviteli mező) */
 .form-group {
     display: flex;
-    flex-direction: column; /* A címke a mező felett legyen */
+    flex-direction: column;
 }
 
-/* Teljes szélességű elemek (Leírás és Gomb) */
 .form-group-full {
-    grid-column: 1 / -1; /* Átfogja az összes oszlopot (1-től az utolsóig) */
+    grid-column: 1 / -1;
 }
 
 .form-group label {
-    font-weight: 600; /* Félkövér címke */
-    color: #34495e;
-    margin-bottom: 8px;
-    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #2f3640;
+    letter-spacing: 0.3px;
+    font-size: 0.97em;
 }
 
-/* Modern Input stílus (input, select, textarea) */
+/* ✨ Prémium input mező dizájn */
 .modern-input {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #bdc3c7;
-    border-radius: 6px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    box-sizing: border-box; /* Fontos, hogy a padding ne rontsa el az elrendezést */
-    font-size: 1em;
+    padding: 14px 17px;
+    background: #f6f8fa;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 1.05em;
+    transition: 0.25s ease;
+    box-shadow: inset 0 0 0 1px #dce1e5;
+}
+
+.modern-input:hover {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px #aeb6bf;
 }
 
 .modern-input:focus {
-    border-color: #3498db; /* Kiemelés fókusz esetén */
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    border-color: #1e90ff;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(30,144,255,0.35);
     outline: none;
-    background-color: #f9feff;
 }
 
 textarea.modern-input {
     resize: vertical;
-    min-height: 150px;
+    min-height: 180px;
 }
 
-/* Gomb stílus */
-.form-group-button {
-    margin-top: 20px;
-    text-align: left; /* A gomb balra igazítása */
-}
-
+/* 🌟 Párnás, modern gomb stílus */
 .gomb {
-    padding: 14px 35px; /* Kényelmes méret */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 38px;
+    font-size: 1.15em;
+    border-radius: 12px;
     border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
-    width: auto; /* A gomb ne legyen feleslegesen széles */
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: 0.22s ease;
+    background: linear-gradient(135deg, #27ae60, #1f8f52);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(39,174,96,0.35);
 }
 
-.letrehoz-gomb {
-    background-color: #2ecc71; /* Zöld */
-    color: white;
-}
-
-.letrehoz-gomb:hover {
-    background-color: #27ae60; /* Sötétebb zöld hover esetén */
-    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+.gomb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(39,174,96,0.45);
 }
 
 .gomb:active {
-    transform: scale(0.98); /* Klikkelés effektus */
+    transform: scale(0.96);
+    box-shadow: 0 4px 10px rgba(39,174,96,0.3);
 }
 
-/* === RESZPONZIVITÁS === */
-
-/* Közepes képernyők (pl. tabletek) - 2 oszlop */
-@media (max-width: 1024px) {
-    #form-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 oszlopra vált */
-    }
-    #new-car-kontener {
-        margin: 15px;
-        padding: 25px;
-    }
+.form-group-button {
+    grid-column: 1 / -1;
+    margin-top: 10px;
 }
 
-/* Kis képernyők (pl. mobilok) - 1 oszlop */
+/* Reszponzivitás */
 @media (max-width: 700px) {
-    #form-grid {
-        grid-template-columns: 1fr; /* 1 oszlopra vált */
-        gap: 20px;
-    }
     #new-car-kontener {
-        margin: 0;
-        padding: 20px;
         border-radius: 0;
+        padding: 25px;
+        margin: 0;
         box-shadow: none;
     }
+
     h1 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
+        font-size: 2.2em;
+        margin-bottom: 25px;
     }
+
     .gomb {
-        width: 100%; /* Mobilon a gomb legyen teljes szélességű */
+        width: 100%;
+        padding: 15px 0;
     }
 }

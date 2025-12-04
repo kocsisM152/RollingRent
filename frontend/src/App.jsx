@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import LeadPage from './pages/LeadPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import EgyediCar from './pages/EgyediCar';
 
 function App() {
     return (
@@ -24,6 +25,10 @@ function App() {
                 <Route
                     path="/cars"
                     element={<Cars />}
+                />
+                <Route
+                    path="/egyedi-car/:id"
+                    element={<EgyediCar />}
                 />
                 <Route
                     path="/login"
