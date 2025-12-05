@@ -1,0 +1,42 @@
+/* ------------------------------------------- */
+/* CarDetail.css - Kiegészítő stílusok a Tailwind CSS-hez */
+/* ------------------------------------------- */
+
+/* Ár kiemelése - Ad egy finom árnyékot a szövegnek */
+.price-highlight {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigációs gombok finom árnyéka és animációja a képváltóban */
+.carousel-nav-button {
+    /* Alapértelmezett árnyék a Tailwind shadow-lg imitálása */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    /* Átmenet a simább animációért */
+    transition: all 0.2s ease-in-out;
+}
+
+.carousel-nav-button:hover {
+     /* Nagyítás, ha fölé viszi az egeret */
+     transform: scale(1.1);
+}
+
+/* Fő tartalom kártya beúszó animációja a betöltéskor */
+.main-card {
+    /* Az animáció előkészítése: láthatatlan és kicsit kisebb */
+    animation: fadeInScale 0.6s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.98);
+}
+
+/* Keyframes az animációhoz */
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Navigációs pontok animációja - Kék gyűrű az aktív pont körül */
+.dot-active {
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* Kék gyűrű árnyék */
+}
