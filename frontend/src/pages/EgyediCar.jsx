@@ -93,6 +93,7 @@ const EgyediCar = () => {
         showSlides(n);
     }
 
+    
     return (
         <div className="egyedi-car-kontener">
             <Navbar />
@@ -104,7 +105,7 @@ const EgyediCar = () => {
                         src={kepek[0]}
                         style={{ width: '100%' }}
                     />
-                    <div className="text">Caption Text</div>
+                    <div className="text"></div>
                 </div>
 
                 <div className="mySlides fade">
@@ -113,7 +114,7 @@ const EgyediCar = () => {
                         src={kepek[1]}
                         style={{ width: '100%' }}
                     />
-                    <div className="text">Caption Two</div>
+                    <div className="text"></div>
                 </div>
 
                 <div className="mySlides fade">
@@ -122,7 +123,7 @@ const EgyediCar = () => {
                         src={kepek[2]}
                         style={{ width: '100%' }}
                     />
-                    <div className="text">Caption Three</div>
+                    <div className="text"></div>
                 </div>
 
                 <a
@@ -155,6 +156,7 @@ const EgyediCar = () => {
                 ></span>
             </div>
         </div>
+        
     );
 };
 
