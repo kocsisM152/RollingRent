@@ -4,34 +4,49 @@
 body {
     font-family: Verdana, sans-serif;
     margin: 0;
+    /* A háttérszín hozzáadása a képernyőképen látható sötét elrendezéshez */
+    background-color: #121212; 
+    color: white; /* Alapértelmezett szövegszín sötét háttérhez */
 }
 
 h1{
     text-align: center;
+    color: white; /* Címszín világosabb, jól látható legyen */
+    padding-top: 20px;
 }
 
 .egyedi-car-kontener {
-    margin-top: 6em;
+    padding-top: 130px; /* Próbáljuk ki ezt az értéket először */
+    margin: 0 auto; 
+    max-width: 1200px; 
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
+/* ... (A többi CSS stílus marad) ... */
+
+/* KÉPGALÉRIA STÍLUSOK */
 .mySlides {
     display: block;
-    height: 700px;
-    /* display: none; */
+    height: 500px; /* Csökkentett magasság a jobb megjelenés érdekében */
 }
 img {
     vertical-align: middle;
     height: 100%;
+    width: 100%; /* Kép kitölti a szélességet */
     object-fit: cover;
 }
 
-/* Slideshow container */
+
 .slideshow-container {
     max-width: 1000px;
     position: relative;
     margin: auto;
+    /* Keret a képgaléria körül */
+    border: 1px solid #333; 
 }
 
-/* Next & previous buttons */
+
 .prev,
 .next {
     cursor: pointer;
@@ -46,21 +61,147 @@ img {
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Félátlátszó háttér a nyilaknak */
+    z-index: 10;
 }
 
-/* Position the "next button" to the right */
+
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
+
 .prev:hover,
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Caption text */
+.dot-container {
+    text-align: center;
+    padding: 10px 0;
+}
+.dot {
+    cursor: pointer;
+    height: 12px; /* Kisebb méret */
+    width: 12px;
+    margin: 0 4px; /* Nagyobb távolság */
+    background-color: #555; /* Sötétebb alapértelmezett pont */
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #f2f2f2; /* Világosabb aktív/hover pont */
+}
+
+
+/* FELSŐ RÉSZ ELRENDEZÉSE */
+.car-top-layout {
+    display: flex;
+    gap: 30px; /* Nagyobb rés a két oszlop között */
+    align-items: flex-start;
+    padding: 40px 0;
+}
+
+.car-images {
+    flex: 2; /* 2/3 arány a képnek */
+    min-width: 0; /* Flexbox túlcsordulás elleni biztosítás */
+}
+
+/* A jobb oldali oszlop stílusa */
+.lg\:col-span-1 {
+    flex: 1; /* 1/3 arány az adatoknak */
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Rés az Adatok és Leírás blokkok között */
+}
+
+/* BLOKKOK STÍLUSA (FŐBB ADATOK, LEÍRÁS) */
+.data-block {
+    background-color: #1e1e1e; /* Sötétebb háttér a blokkoknak */
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+}
+
+.data-block h2 {
+    color: #f2f2f2;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.data-block ul,
+.data-block p {
+    margin: 0;
+    padding: 0;
+    color: #ccc;
+}
+.data-block p {
+    line-height: 1.6;
+}
+
+/* RÉSZLET ITEM STÍLUSA */
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #2a2a2a; /* Elkülönítés */
+}
+.detail-item:last-child {
+    border-bottom: none;
+}
+.detail-item-label {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: #ddd;
+}
+.detail-item-icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+.detail-item-value {
+    font-weight: 700;
+    color: #f2f2f2;
+    text-align: right;
+}
+
+
+/* MÉDIA LEKÉRDEZÉSEK */
+@media (max-width: 1024px) {
+    .car-top-layout {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .car-images {
+        width: 100%;
+    }
+    .mySlides {
+        height: 400px; 
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .mySlides {
+        height: 300px; 
+    }
+    .prev,
+    .next,
+    .text {
+        font-size: 11px;
+    }
+}
+
+/* A JSX-ben szereplő osztályneveket átkonvertáltam a fenti stílusokba, 
+   de néhány segédosztályt megtartottam a React komponensben a jobb olvashatóság érdekében. */
+
+/* Eredeti CSS-ből áthozva, de az új designhoz igazítva */
 .text {
     color: #f2f2f2;
     font-size: 15px;
@@ -71,33 +212,18 @@ img {
     text-align: center;
 }
 
-/* Number text (1/3 etc) */
+
 .numbertext {
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
     top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 5px 0;
 }
 
-/* The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
 
-.active,
-.dot:hover {
-    background-color: #717171;
-}
-
-/* Fading animation */
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
@@ -109,14 +235,5 @@ img {
     }
     to {
         opacity: 1;
-    }
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-    .prev,
-    .next,
-    .text {
-        font-size: 11px;
     }
 }

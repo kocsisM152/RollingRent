@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import './BerlesiFeltetelek.css';
 
 const BerlesiFeltetlek = () => {
   return (
-    <div>
+    <div className="berlesi-container">
         <h1>Bérlési feltételek</h1>
         <ul>
             <li>Betöltött 28. életév és 8 éves B-kategóriás jogosítvány.</li>
@@ -14,4 +15,4 @@ const BerlesiFeltetlek = () => {
   )
 }
 
-export default BerlesiFeltetlek
+export default BerlesiFeltetlek;
