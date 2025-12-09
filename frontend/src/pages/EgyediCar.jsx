@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import './EgyediCar.css';
+import BerlesiFeltetlek from '../components/BerlesiFeltetlek';
 
 const EgyediCar = () => {
     const { id } = useParams();
@@ -155,9 +156,81 @@ const EgyediCar = () => {
                     onClick={() => currentSlide(3)}
                 ></span>
             </div>
+
+            <div className="lg:col-span-1 space-y-6">
+                        <div className="bg-indigo-50 p-6 rounded-xl shadow-lg">
+                            <h2 className="text-2xl font-bold text-indigo-800 mb-4 border-b pb-2 border-indigo-200">
+                                Főbb adatok
+                            </h2>
+                            <ul className="space-y-3 text-gray-700">
+                                <DetailItem
+                                    label="Szín"
+                                    value={car.szin || 'N/A'}
+                                    icon="🎨"
+                                />
+                                <DetailItem
+                                    label="Üzemanyag"
+                                    value={car.uzemanyag || 'N/A'}
+                                    icon="⛽"
+                                />
+                                <DetailItem
+                                    label="Váltó"
+                                    value={car.valto || 'N/A'}
+                                    icon="⚙️"
+                                />
+                                <DetailItem
+                                    label="Teljesítmény"
+                                    value={`${car.teljesitmeny || 'N/A'} LE`}
+                                    icon="🚀"
+                                />
+                                <DetailItem
+                                    label="Urtartalom"
+                                    value={`${car.urtartalom || 'N/A'} cm³`}
+                                    icon="🏎️"
+                                />
+                                <DetailItem
+                                    label="Származási ország"
+                                    value={car.szarmazasiorszag || 'N/A'}
+                                    icon="🌍"
+                                />
+                                <DetailItem
+                                    label="Foglalható"
+                                    value={car.foglalhatoe ? 'Igen' : 'Nem'}
+                                    icon={car.foglalhatoe ? '✅' : '❌'}
+                                />
+                                <DetailItem
+                                    label="Bérlési feltételek"
+                                    icon="📜"
+                                
+                                />
+                            </ul>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-3">
+                                Leírás
+                            </h2>
+                            <p className="text-gray-600 leading-relaxed italic">
+                                {car.leiras ||
+                                    'Nincs részletes leírás ehhez az autóhoz.'}
+                            </p>
+                        </div>
+            </div>
+            <BerlesiFeltetlek /> 
+
         </div>
         
     );
 };
+
+// Segédkomponens a részletekhez
+const DetailItem = ({ label, value, icon }) => (
+    <li className="flex justify-between items-center text-base">
+        <span className="font-medium flex items-center">
+            <span className="mr-2 text-xl">{icon}</span> {label}:
+        </span>
+        <span className="text-gray-800 font-semibold">{value}</span>
+    </li>
+);
 
 export default EgyediCar;

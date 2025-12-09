@@ -28,6 +28,7 @@ const MOCK_CARS = [
         teljesitmeny: 340,
         foglalhatoe: true,
         kedvezmeny: 20,
+        berlesifeltetelek:'Betöltött 28. életév és 8 éves B-kategóriás jogosítvány,Érvényes személyi igazolvány és lakcímkártya vagy útlevél,Bármely típusú gépkocsi esetén szükséges 1.000.000,- Ft kaució letétele. A kauciót legkésőbb az autó átadásakor kell letétbe helyezni, és a gépkocsi épségben, szerződésnek megfelelő állapotban történő visszaadásakor fizetjük vissza,A kaució bankkártyás fizetéssel, banki deposit formájában vagy készpénzes fizetéssel is teljesíthető' ,
     },
     {
         _id: '68fb1f8129a6e6c367e6235f',
