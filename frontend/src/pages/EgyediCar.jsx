@@ -163,6 +163,10 @@ const EgyediCar = () => {
                                 value={car.foglalhatoe ? 'Igen' : 'Nem'}
                                 icon={car.foglalhatoe ? '✅' : '❌'}
                             />
+                            <DetailItem
+                                label="Ár"
+                                value={`${car.ar || 'N/A'} FT`}
+                            />
                         </ul>
                     </div>
                 </div>
