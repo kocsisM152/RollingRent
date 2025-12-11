@@ -10,6 +10,8 @@ async function modosit(event, id) {
     const kep1 = document.querySelector('#kep1').value;
     const kep2 = document.querySelector('#kep2').value;
     const kep3 = document.querySelector('#kep3').value;
+    console.log(kep1, kep2, kep3);
+    
 
     const response = await fetch(`/api/cars-backend/${id}`, {
         method: 'PUT',

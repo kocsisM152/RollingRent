@@ -52,6 +52,7 @@ exports.updateOneCarBackend = async (req, res) => {
             kep2,
             kep3,
         } = req.body;
+        const kepek = [kep1, kep2, kep3];
         await Car.findByIdAndUpdate(
             { _id: id },
             {
@@ -62,9 +63,7 @@ exports.updateOneCarBackend = async (req, res) => {
                 leiras,
                 ar,
                 kedvezmeny,
-                kep1,
-                kep2,
-                kep3,
+                kepek
             }
         );
         res.statusCode = 201;
