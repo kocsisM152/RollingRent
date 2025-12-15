@@ -1,0 +1,31 @@
+.naptar-block {
+    margin-top: 16px;
+    padding: 14px;
+}
+
+.naptar-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.naptar-row label {
+    font-size: 0.75rem;
+}
+
+.naptar-row input {
+    padding: 6px;
+    font-size: 0.85rem;
+}
+
+.naptar-error {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 6px;
+}
+
+.foglalas-gomb {
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 0.85rem;
+}

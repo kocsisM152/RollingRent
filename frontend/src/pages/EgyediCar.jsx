@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import FoglalasiNaptar from './Naptar';
 // Feltételezve, hogy a fenti CSS ide van importálva:
 import './EgyediCar.css'; 
 import './valami.css'; 
@@ -169,6 +170,10 @@ const EgyediCar = () => {
                             />
                         </ul>
                     </div>
+                    <FoglalasiNaptar
+                        foglalhato={car.foglalhatoe}
+                        carId={car._id}
+                    />
                 </div>
             </div>
 
