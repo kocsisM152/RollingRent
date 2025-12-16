@@ -4,6 +4,11 @@ async function modosit(event, id) {
     const tipus = document.querySelector('#tipus').value;
     const evjarat = document.querySelector('#evjarat').value;
     const szarmazasiorszag = document.querySelector('#szarmazasiorszag').value;
+    const uzemanyag = document.querySelector('#uzemanyag').value;
+    const valto = document.querySelector('#valto').value;
+    const szin = document.querySelector('#szin').value;
+    const urtartalom = document.querySelector('#urtartalom').value;
+    const teljesitmeny = document.querySelector('#teljesitmeny').value;
     const leiras = document.querySelector('#leiras').value;
     const ar = document.querySelector('#ar').value;
     const kedvezmeny = document.querySelector('#kedvezmeny').value;
@@ -24,6 +29,11 @@ async function modosit(event, id) {
             evjarat,
             szarmazasiorszag,
             leiras,
+            urtartalom,
+            teljesitmeny,
+            valto,
+            szin,
+            uzemanyag,
             ar,
             kedvezmeny,
             kep1,
