@@ -95,7 +95,9 @@ const EgyediCar = () => {
     return (
         <div className="egyedi-car-kontener">
             <Navbar />
+            <div className='valami'>
             <h1>{car.marka || 'Autó adatai'}</h1>
+            </div>
 
             {/* 🔴 FELSŐ RÉSZ: KÉP + ADATOK */}
             <div className="car-top-layout">

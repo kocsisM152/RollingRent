@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -13,6 +16,10 @@ h1{
     text-align: center;
     color: white; /* Címszín világosabb, jól látható legyen */
     padding-top: 20px;
+}
+
+.valami h1{
+    font-family: "Knewave", system-ui;
 }
 
 .egyedi-car-kontener {
