@@ -3,6 +3,12 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.szurok {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 h1{
   height: auto;
 }

@@ -8,7 +8,7 @@ const Car = ({ kocsi }) => {
   }
   return (
     <div className="kocsi" key={kocsi._id} onClick={() =>betolt(kocsi._id)}>
-      <div className="kocsi-kep">
+      <div className="kocsi-kep" style={{backgroundColor: kocsi.foglalhatoe ?  'white' : 'grey'}}>
         <h1>Típus: {kocsi.tipus}</h1>
         <img src={kocsi.kepek?.[0]} alt={kocsi.tipus} />
 
