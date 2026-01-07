@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 
 const Cars = () => {
   const [cars, setCars] = useState([]);
+  const [eredetiCars, setEredetiCars] = useState([]);
 
   // szűrők state-jei
   const [selectedBrand, setSelectedBrand] = useState("");
@@ -14,9 +15,11 @@ const Cars = () => {
     const kocsiLeker = async () => {
       const response = await fetch("http://localhost:3500/api/cars-frontend");
       const adat = await response.json();
-
+      console.log(adat.cars);
+      
       if (response.ok) {
         setCars(adat.cars);
+        setEredetiCars(adat.cars);
       } else {
         window.alert(adat.msg);
       }
@@ -25,8 +28,26 @@ const Cars = () => {
     kocsiLeker();
   }, []);
 
+  const handleList = (brand) => {
+    console.log(brand);
+    setCars(eredetiCars)
+    console.log(eredetiCars);
+    console.log(cars);
+    if (brand !== "Összes") {
+      let brandCars = eredetiCars.filter(elem => elem.marka.includes(brand))
+      setCars(brandCars) 
+    } else if (brand === "Összes") {
+      setCars(eredetiCars)
+    }
+    // if (selectedFuels.includes(fuel)) {
+    //   setSelectedFuels(selectedFuels.filter((f) => f !== fuel));
+    // } else {
+    //   setSelectedFuels([...selectedFuels, fuel]);
+    // }
+  };
+  
   // üzemanyag checkbox kezelése
-  const handleFuelChange = (fuel) => {
+  const handleFuelChange = (fuel) => {    
     if (selectedFuels.includes(fuel)) {
       setSelectedFuels(selectedFuels.filter((f) => f !== fuel));
     } else {
@@ -43,9 +64,10 @@ const Cars = () => {
           <h4>Típus (márka):</h4>
           <select
             value={selectedBrand}
-            onChange={(e) => setSelectedBrand(e.target.value)}
+            onChange={(e) => handleList(e.target.value)}
           >
-            <option value="">Összes</option>
+            <option></option>
+            <option value="Összes">Összes</option>
             <option value="Audi">Audi</option>
             <option value="BMW">BMW</option>
             <option value="Chevrolet">Chevrolet</option>
@@ -73,8 +95,8 @@ const Cars = () => {
           <label>
             <input
               type="checkbox"
-              checked={selectedFuels.includes("Benzin")}
-              onChange={() => handleFuelChange("Benzin")}
+              checked={selectedFuels.includes("benzin")}
+              onChange={() => handleFuelChange("benzin")}
             />
             Benzin
           </label>
@@ -82,17 +104,17 @@ const Cars = () => {
           <label>
             <input
               type="checkbox"
-              checked={selectedFuels.includes("Dízel")}
-              onChange={() => handleFuelChange("Dízel")}
+              checked={selectedFuels.includes("dizel")}
+              onChange={() => handleFuelChange("dizel")}
             />
-            Dízel
+            Dizel
           </label>
 
           <label>
             <input
               type="checkbox"
-              checked={selectedFuels.includes("Benzin + villany")}
-              onChange={() => handleFuelChange("Benzin + villany")}
+              checked={selectedFuels.includes("benzin + villany")}
+              onChange={() => handleFuelChange("benzin + villany")}
             />
             Benzin + villany
           </label>
