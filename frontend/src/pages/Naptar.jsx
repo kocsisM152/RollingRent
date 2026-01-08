@@ -11,19 +11,19 @@ const FoglalasiNaptar = ({ foglalhato, carId }) => {
     const today = formatDate(new Date());
 
     // 🔽 backend foglalt napok
-    useEffect(() => {
-        if (!carId) return;
+    // useEffect(() => {
+    //     if (!carId) return;
 
-        fetch(`http://localhost:3500/api/bookings/${carId}`)
-            .then(res => res.json())
-            .then(data => {
-                const days = [];
-                data.forEach(b =>
-                    days.push(...getDaysBetween(b.start, b.end))
-                );
-                setBlockedDays(days);
-            });
-    }, [carId]);
+    //     fetch(`http://localhost:3500/api/bookings/${carId}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const days = [];
+    //             data.forEach(b =>
+    //                 days.push(...getDaysBetween(b.start, b.end))
+    //             );
+    //             setBlockedDays(days);
+    //         });
+    // }, [carId]);
 
     const handleStart = (e) => {
         const value = e.target.value;
@@ -48,6 +48,16 @@ const FoglalasiNaptar = ({ foglalhato, carId }) => {
         }
 
         setEndDate(value);
+    };
+
+    const foglal = () => {
+        const belepve = localStorage.getItem('isLoggedIn');
+        const kDatum = startDate;
+        const vDatum = endDate;
+        
+        if (belepve === '1') window.alert("Kérjük jelentkezzen be!");
+
+        window.location.href = '/foglalas';
     };
 
     return (
@@ -84,6 +94,7 @@ const FoglalasiNaptar = ({ foglalhato, carId }) => {
                     <button
                         className="foglalas-gomb"
                         disabled={!startDate || !endDate || error}
+                        onClick={foglal}
                     >
                         Foglalás indítása
                     </button>
