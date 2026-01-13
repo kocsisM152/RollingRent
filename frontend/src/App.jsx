@@ -8,6 +8,7 @@ import LeadPage from './pages/LeadPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import EgyediCar from './pages/EgyediCar';
+import Foglalas from './pages/Foglalas';
 
 function App() {
     return (
@@ -37,6 +38,10 @@ function App() {
                 <Route
                     path="/register"
                     element={<Register />}
+                />
+                <Route
+                    path="/foglalas/:id"
+                    element={<Foglalas />}
                 />
             </Routes>
         </BrowserRouter>

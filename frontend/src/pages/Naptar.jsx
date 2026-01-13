@@ -54,10 +54,12 @@ const FoglalasiNaptar = ({ foglalhato, carId }) => {
         const belepve = localStorage.getItem('isLoggedIn');
         const kDatum = startDate;
         const vDatum = endDate;
+        localStorage.setItem('kdatum', JSON.stringify(kDatum));
+        localStorage.setItem('vdatum', JSON.stringify(vDatum));
         
         if (belepve === '1') window.alert("Kérjük jelentkezzen be!");
 
-        window.location.href = '/foglalas';
+        window.location.href = `/foglalas/${carId}`;
     };
 
     return (

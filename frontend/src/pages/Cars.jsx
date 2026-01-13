@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 const Cars = () => {
   const [cars, setCars] = useState([]);
   const [eredetiCars, setEredetiCars] = useState([]);
+  
 
   // szűrők state-jei
   const [selectedBrand, setSelectedBrand] = useState("");
