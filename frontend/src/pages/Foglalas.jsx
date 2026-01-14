@@ -1,52 +1,53 @@
-import { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom'
-import Navbar from '../components/Navbar';
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import "./Foglalas.css";
 
 const Foglalas = () => {
-    const { id } = useParams();
-    const [car, setCar] = useState({});
-    const [kepek, setKepek] = useState([]);
-    const [kDatum, setKDatum] = useState('');
-    const [vDatum, setVDatum] = useState('');
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [car, setCar] = useState({});
+  const [kepek, setKepek] = useState([]);
+  const [kDatum, setKDatum] = useState("");
+  const [vDatum, setVDatum] = useState("");
 
-    const kido = JSON.parse(localStorage.getItem('kdatum'));
-    console.log(kido);
-    
-    const vido = JSON.parse(localStorage.getItem('vdatum'));
+  const kido = JSON.parse(localStorage.getItem("kdatum"));
+  console.log(kido);
 
-     useEffect(() => {
-            setKDatum(kido);
-            setVDatum(vido);
+  const vido = JSON.parse(localStorage.getItem("vdatum"));
 
-            // ... (adatlekérő logika változatlan) ...
-            const kocsiLeker = async () => {
-                const response = await fetch(
-                    'http://localhost:3500/api/cars-frontend'
-                );
-                const adat = await response.json();
-                const kocsi = adat.cars.filter((elem) => elem._id === id);
-    
-                if (response.ok) {
-                    setCar(kocsi[0]);
-                    console.log(kocsi[0].kepek);
-                    
-                    setKepek(kocsi[0].kepek);
-                } else {
-                    window.alert(adat.msg);
-                }
-            };
-            kocsiLeker();
-        }, []);
+  useEffect(() => {
+    setKDatum(kido);
+    setVDatum(vido);
+
+    // ... (adatlekérő logika változatlan) ...
+    const kocsiLeker = async () => {
+      const response = await fetch("http://localhost:3500/api/cars-frontend");
+      const adat = await response.json();
+      const kocsi = adat.cars.filter((elem) => elem._id === id);
+
+      if (response.ok) {
+        setCar(kocsi[0]);
+        console.log(kocsi[0].kepek);
+
+        setKepek(kocsi[0].kepek);
+      } else {
+        window.alert(adat.msg);
+      }
+    };
+    kocsiLeker();
+  }, []);
   return (
     <div>
-        <Navbar />
+      <Navbar />
       <h1>Foglalás</h1>
       <p>{car.marka}</p>
-      <img src={kepek[0]} />
-      <p>Bérlés kezdete: {kDatum}</p>
-      <p>Bérlés vége: {vDatum}</p>
+      <img className="foglalas-kep" src={kepek[0]} />
+      <p className="foglalas-p">Bérlés kezdete: {kDatum}</p>
+      <p className="foglalas-p">Bérlés vége: {vDatum}</p>
+      <button onClick={() => navigate("/fizetes")}>Tovább a fizetéshez</button>
     </div>
-  )
-}
+  );
+};
 
-export default Foglalas
+export default Foglalas;
