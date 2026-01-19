@@ -1,9 +1,21 @@
 import Navbar from "../components/Navbar";
-// import "./Fizetes.css";
 
 const Fizetes = () => {
-  // ideiglenes ár (később jöhet backendről)
-  const ar = 189_900;
+  const berles = JSON.parse(
+    localStorage.getItem("berles")
+  );
+
+  if (!berles) {
+    return (
+      <div>
+        <Navbar />
+        <p>Nincs aktív bérlés</p>
+      </div>
+    );
+  }
+
+  const { napiAr, berlesNapok, kezdet, vege } = berles;
+  const vegosszeg = napiAr * berlesNapok;
 
   return (
     <div>
@@ -13,10 +25,35 @@ const Fizetes = () => {
         <h1>Fizetés</h1>
 
         <div className="fizetes-kartya">
-          <p className="fizetes-cim">Bérlés végösszeg</p>
-          <p className="fizetes-ar">{ar.toLocaleString()} Ft</p>
+          <p>Kezdete: {kezdet}</p>
+          <p>Vége: {vege}</p>
+          <p>Bérlés hossza: {berlesNapok} nap</p>
+          <p>Napi ár: {napiAr.toLocaleString()} Ft</p>
 
-          <button className="fizetes-gomb">Fizetés folytatása</button>
+          <hr />
+
+          <p className="fizetes-cim">Bérlés végösszeg</p>
+          <p className="fizetes-ar">
+          {vegosszeg.toLocaleString()} Ft
+          </p>
+
+          <button
+  className="fizetes-gomb"
+  onClick={() => {
+    // Itt jönne a fizetés backend logika (pl. Stripe, SimplePay)
+    
+    // Töröljük a bérlés adatot localStorage-ból
+    localStorage.removeItem("berles");
+
+    // Visszajelzés a usernek
+    alert("Sikeres fizetés!");
+
+    // Opcionális: átirányítás pl. főoldalra
+    window.location.href = "/";
+  }}
+>
+  Fizetés folytatása
+</button>
         </div>
       </div>
     </div>

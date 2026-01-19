@@ -175,6 +175,7 @@ const EgyediCar = () => {
                     <FoglalasiNaptar
                         foglalhato={car.foglalhatoe}
                         carId={car._id}
+                        napiAr={car.ar}
                     />
                 </div>
             </div>

@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import "./Naptar.css";
 import { formatDate, getDaysBetween, rangeHasBlockedDay } from "../utils/dateUtils";
 
-const FoglalasiNaptar = ({ foglalhato, carId }) => {
+const FoglalasiNaptar = ({ foglalhato, carId, napiAr }) => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [blockedDays, setBlockedDays] = useState([]);
     const [error, setError] = useState('');
+    //  
 
     const today = formatDate(new Date());
 
@@ -51,15 +52,31 @@ const FoglalasiNaptar = ({ foglalhato, carId }) => {
     };
 
     const foglal = () => {
-        const belepve = localStorage.getItem('isLoggedIn');
-        const kDatum = startDate;
-        const vDatum = endDate;
-        localStorage.setItem('kdatum', JSON.stringify(kDatum));
-        localStorage.setItem('vdatum', JSON.stringify(vDatum));
         
-        if (belepve === '1') window.alert("Kérjük jelentkezzen be!");
+    const egyNap = 1000 * 60 * 60 * 24;
 
-        window.location.href = `/foglalas/${carId}`;
+    const kezdet = new Date(startDate);
+    const vege = new Date(endDate);
+
+    const berlesNapok = Math.max(
+        1,
+        Math.ceil((vege - kezdet) / egyNap)
+    );
+
+    const berles = {
+        napiAr: napiAr,
+        carId: carId,
+        kezdet: startDate,
+        vege: endDate,
+        berlesNapok: berlesNapok
+    }; 
+
+    localStorage.setItem(
+        "berles",
+        JSON.stringify(berles)
+    );
+
+    window.location.href = "/fizetes";
     };
 
     return (
