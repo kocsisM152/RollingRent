@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import EgyediCar from "./pages/EgyediCar";
 import Foglalas from "./pages/Foglalas";
 import Fizetes from "./pages/Fizetes";
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/foglalas/:id" element={<Foglalas />} />
         <Route path="/fizetes" element={<Fizetes />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
     </BrowserRouter>
   );

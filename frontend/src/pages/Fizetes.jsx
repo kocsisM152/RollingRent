@@ -1,9 +1,19 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
+import './Fizetes.css';
+import { useEffect } from "react";
 
 const Fizetes = () => {
   const berles = JSON.parse(
     localStorage.getItem("berles")
   );
+  const [items, setIitems] = useState([]);
+
+  useEffect(() => {
+    const tomb = [];
+    tomb.push(berles);
+    setIitems(tomb);
+  }, [])
 
   if (!berles) {
     return (
@@ -16,6 +26,30 @@ const Fizetes = () => {
 
   const { napiAr, berlesNapok, kezdet, vege } = berles;
   const vegosszeg = napiAr * berlesNapok;
+
+  const kiegyenlites = async () => {
+     try {
+          // Itt hívjuk meg a BACKEND-edet (ezt meg kell írnod a szerver oldalon!)
+          const res = await fetch("http://localhost:3500/api/stripe/create-checkout-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items: items }) // A te items state-edet küldjük
+          });
+
+          const data = await res.json();
+          console.log(data);
+          
+
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            console.error("Hiba: Nem érkezett URL a szervertől.");
+            
+          }
+        } catch (error) {
+          console.error("Hálózati hiba:", error);
+        }
+      };
 
   return (
     <div>
@@ -37,21 +71,7 @@ const Fizetes = () => {
           {vegosszeg.toLocaleString()} Ft
           </p>
 
-          <button
-  className="fizetes-gomb"
-  onClick={() => {
-    // Itt jönne a fizetés backend logika (pl. Stripe, SimplePay)
-    
-    // Töröljük a bérlés adatot localStorage-ból
-    localStorage.removeItem("berles");
-
-    // Visszajelzés a usernek
-    alert("Sikeres fizetés!");
-
-    // Opcionális: átirányítás pl. főoldalra
-    window.location.href = "/";
-  }}
->
+          <button className="fizetes-gomb" onClick={kiegyenlites} >
   Fizetés folytatása
 </button>
         </div>

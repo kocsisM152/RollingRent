@@ -1,0 +1,46 @@
+/* A fő konténer, ami az egész oldalt fogja */
+.fizetes-container {
+    display: flex;
+    flex-direction: column; /* Egymás alá rakja az elemeket */
+    align-items: center;    /* Vízszintesen középre igazítja őket */
+    justify-content: flex-start; 
+    padding-top: 50px;      /* Hogy ne legyen ráragadva a Navbarra */
+    min-height: 100vh;
+    background-color: #121212; /* Sötét háttér, mint a képen */
+    color: white;
+}
+
+/* A kártya, amiben a szövegek vannak */
+.fizetes-kartya {
+    display: flex;
+    flex-direction: column; /* Itt is kényszerítjük az egymás alá kerülést */
+    align-items: center;    /* A kártyán belül is minden középre kerül */
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* A gomb stílusa, hogy elkülönüljön */
+.fizetes-gomb {
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.fizetes-gomb:hover {
+    background-color: #444;
+}
+
+/* Vonal (hr) szélessége */
+hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 20px 0;
+}

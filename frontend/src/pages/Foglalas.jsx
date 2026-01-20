@@ -37,17 +37,39 @@ const Foglalas = () => {
     };
     kocsiLeker();
   }, []);
+  // return (
+  //   <div>
+  //     <Navbar />
+  //     <h1>Foglalás</h1>
+  //     <p>{car.marka}</p>
+  //     <img className="foglalas-kep" src={kepek[0]} />
+  //     <p className="foglalas-p">Bérlés kezdete: {kDatum}</p>
+  //     <p className="foglalas-p">Bérlés vége: {vDatum}</p>
+  //     <button onClick={() => navigate("/fizetes")}>Tovább a fizetéshez</button>
+  //   </div>
+  // );
   return (
-    <div>
-      <Navbar />
-      <h1>Foglalás</h1>
-      <p>{car.marka}</p>
-      <img className="foglalas-kep" src={kepek[0]} />
-      <p className="foglalas-p">Bérlés kezdete: {kDatum}</p>
-      <p className="foglalas-p">Bérlés vége: {vDatum}</p>
-      <button onClick={() => navigate("/fizetes")}>Tovább a fizetéshez</button>
-    </div>
-  );
+  <div>
+    <Navbar />
+    <h1>Foglalás</h1>
+    <p>{car.marka}</p>
+    <img className="foglalas-kep" src={kepek[0]} alt="auto" />
+    <p className="foglalas-p">Bérlés kezdete: {kDatum}</p>
+    <p className="foglalas-p">Bérlés vége: {vDatum}</p>
+    
+    {/* Feltételes gomb megjelenítés */}
+    {car.foglalhato === false ? (
+      <button disabled style={{ backgroundColor: 'gray', cursor: 'not-allowed' }}>
+        Ez az autó már foglalt
+      </button>
+    ) : (
+      <button onClick={() => navigate("/fizetes")}>
+        Tovább a fizetéshez
+      </button>
+    )}
+  </div>
+);
+
 };
 
 export default Foglalas;

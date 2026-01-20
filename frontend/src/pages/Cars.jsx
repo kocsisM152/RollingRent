@@ -85,6 +85,7 @@ const Cars = () => {
             <option value="Jaguar">Jaguar</option>
             <option value="Bugatti">Bugatti</option>
             <option value="Mercedes">Mercedes</option>
+            <option value="Tesla">Tesla</option>
           </select>
         </div>
 
@@ -123,8 +124,8 @@ const Cars = () => {
           <label>
             <input
               type="checkbox"
-              checked={selectedFuels.includes("Elektromos")}
-              onChange={() => handleFuelChange("Elektromos")}
+              checked={selectedFuels.includes("elektromos")}
+              onChange={() => handleFuelChange("elektromos")}
             />
             Elektromos
           </label>

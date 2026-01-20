@@ -42,3 +42,4 @@ app.use(
     require('./routes/users/userRegisterRoutes.js')
 );
 app.use('/api/login-frontend', require('./routes/users/userLoginRoutes.js'));
+app.use('/api/stripe', require('./routes/stripeRoutes.js'));

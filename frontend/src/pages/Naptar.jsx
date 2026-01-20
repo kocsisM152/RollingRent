@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import "./Naptar.css";
 import { formatDate, getDaysBetween, rangeHasBlockedDay } from "../utils/dateUtils";
 
-const FoglalasiNaptar = ({ foglalhato, carId, napiAr }) => {
+const FoglalasiNaptar = ({ foglalhato, car, napiAr }) => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [blockedDays, setBlockedDays] = useState([]);
@@ -65,7 +65,7 @@ const FoglalasiNaptar = ({ foglalhato, carId, napiAr }) => {
 
     const berles = {
         napiAr: napiAr,
-        carId: carId,
+        car: car,
         kezdet: startDate,
         vege: endDate,
         berlesNapok: berlesNapok
