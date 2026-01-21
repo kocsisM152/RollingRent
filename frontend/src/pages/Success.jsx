@@ -51,13 +51,16 @@ const styles = {
 };
 // A Success.jsx-ben
     useEffect(() => {
-  const carId = localStorage.getItem("selectedCarId"); // Tegyük fel, ide mentetted el
+  const berles = JSON.parse(localStorage.getItem("berles")); // Tegyük fel, ide mentetted el
+  console.log(berles.car._id);
+  const carId = berles.car._id;
+  
   
   if (carId) {
     fetch(`http://localhost:3500/api/cars/${carId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ foglalhato: false }) // Átállítjuk hamisra
+      body: JSON.stringify({ foglalhatoe: false }) // Átállítjuk hamisra
     })
     .then(res => console.log("Státusz frissítve"))
     .catch(err => console.error("Hiba a frissítéskor", err));
