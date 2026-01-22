@@ -27,6 +27,7 @@ const Navbar = () => {
             <Link to="/">Nyitó</Link>
             <Link to="/lead">Főoldal</Link>
             <Link to="/cars">Autók</Link>
+            <Link to="/favouritecars">Kedvenc Autók</Link>
             {isLoggedIn ? (
                 <div className="login-belso-kontener">
                     <Link to="/register">Regisztráció</Link>

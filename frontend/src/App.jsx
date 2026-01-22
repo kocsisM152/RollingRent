@@ -12,6 +12,7 @@ import Foglalas from "./pages/Foglalas";
 import Fizetes from "./pages/Fizetes";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
+import Favouritecars from "./pages/Favouritecars";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/foglalas/:id" element={<Foglalas />} />
         <Route path="/fizetes" element={<Fizetes />} />
         <Route path="/success" element={<Success />} />
+        <Route path="/favouritecars" element={<Favouritecars />} />
         <Route path="/cancel" element={<Cancel />} />
       </Routes>
     </BrowserRouter>
