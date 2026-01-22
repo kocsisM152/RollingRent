@@ -11,6 +11,35 @@ const Cars = () => {
   // szűrők state-jei
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedFuels, setSelectedFuels] = useState([]);
+  // Car.jsx (vagy ahol a kártya van)
+
+  const Car = ({ kocsi }) => {
+  const handleFavorite = () => {
+    // Lekérjük a jelenlegi kedvenceket vagy egy üres tömböt
+    const currentFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    
+    // Megnézzük, benne van-e már (id alapján)
+    const isAlreadyFavorite = currentFavorites.some(item => item._id === kocsi._id);
+
+    if (!isAlreadyFavorite) {
+      const updatedFavorites = [...currentFavorites, kocsi];
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      alert("Hozzáadva a kedvencekhez! ⭐");
+    } else {
+      alert("Ez az autó már a kedvenceid között van!");
+    }
+  };
+
+  return (
+    <div className="car-card">
+      {/* Itt a meglévő kódod a képpel és adatokkal */}
+      <h3>{kocsi.tipus}</h3>
+      <button onClick={handleFavorite} className="fav-button">
+        ⭐ Kedvencekhez
+      </button>
+    </div>
+  );
+};
 
   useEffect(() => {
     const kocsiLeker = async () => {
@@ -25,6 +54,7 @@ const Cars = () => {
         window.alert(adat.msg);
       }
     };
+    
 
     kocsiLeker();
   }, []);
@@ -150,5 +180,7 @@ const Cars = () => {
     </>
   );
 };
+
+
 
 export default Cars;
