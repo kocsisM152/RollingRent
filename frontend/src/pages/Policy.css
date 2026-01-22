@@ -1,0 +1,140 @@
+/* Ezzel kényszerítjük a fekete hátteret az egész oldalra */
+.policy-main-wrapper {
+    background-color: #000000 !important;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 40px 0;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    display: block;
+}
+
+/* Ez a konténer felel a szélességért (SZÉTHÚZVA) */
+.policy-outer-container {
+    width: 95% !important;
+    max-width: 1800px; /* Hatalmas szélesség nagy monitorokra */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Gomb elhelyezése */
+.policy-btn-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.policy-switch-btn {
+    background-color: transparent;
+    color: #3b82f6; /* Kék szín */
+    border: 2px solid #3b82f6;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.policy-switch-btn:hover {
+    background-color: #3b82f6;
+    color: white;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+/* Főcím stílusa */
+.policy-title {
+    color: #3b82f6;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.policy-lead {
+    text-align: center;
+    color: #cccccc;
+    font-size: 1.3rem;
+    margin-bottom: 60px;
+}
+
+/* GRID: Ez húzza szét a szekciókat egymás mellé */
+.policy-grid-system {
+    display: grid;
+    /* 3 oszlop nagy monitoron, 1 oszlop mobilon */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    width: 100%;
+}
+
+/* Kártyák (egyes pontok) stílusa */
+.policy-block {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    padding: 35px;
+    border-radius: 12px;
+    border-top: 5px solid #3b82f6; /* Felül kék csík */
+}
+
+.policy-block h3 {
+    color: #3b82f6;
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 10px;
+}
+
+.policy-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.policy-block li {
+    margin-bottom: 18px;
+    color: #ffffff; /* Világos szöveg */
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.policy-block strong {
+    color: #3b82f6; /* Kiemelt szavak kéken */
+    margin-right: 5px;
+}
+
+/* Alsó megjegyzés doboz */
+.policy-footer-box {
+    margin-top: 60px;
+    background-color: #0d0d0d;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px dashed #333;
+    text-align: center;
+}
+
+.policy-footer-box p {
+    color: #999;
+    font-size: 1.1rem;
+}
+
+/* Animáció a váltáshoz */
+.policy-fade-in {
+    animation: fadeInPolicy 0.8s ease-in-out;
+}
+
+@keyframes fadeInPolicy {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobilnézet javítása */
+@media (max-width: 800px) {
+    .policy-grid-system {
+        grid-template-columns: 1fr;
+    }
+    .policy-title {
+        font-size: 1.8rem;
+    }
+}
