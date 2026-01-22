@@ -12,7 +12,7 @@ const Car = ({ kocsi }) => {
     window.location.href = `/egyedi-car/${id}`;
   };
 
-  // 🔹 SZÍN OSZTÁLY MEGHATÁROZÁSA
+  // 🔹 Kedvezmény színének meghatározása
   const kedvezmenySzine = () => {
     if (kedvezmeny === 10) return "kedvezmeny-zold";
     if (kedvezmeny === 20) return "kedvezmeny-kek";
@@ -32,15 +32,11 @@ const Car = ({ kocsi }) => {
           <img src={kocsi.kepek?.[0]} alt={kocsi.tipus} />
 
           {kedvezmeny > 0 && (
-            <div
-              className={`kedvezmeny-badge ${kedvezmenySzine()}`}
-            >
+            <div className={`kedvezmeny-badge ${kedvezmenySzine()}`}>
               -{kedvezmeny}%
             </div>
           )}
         </div>
-
-        {/* <p>{kedvezmeny}%</p> */}
 
         <h2>Részletek:</h2>
         <p>Származási ország: {kocsi.szarmazasiorszag}</p>
@@ -50,7 +46,9 @@ const Car = ({ kocsi }) => {
         <p>Teljesítmény: {kocsi.teljesitmeny} LE</p>
         <p>Űrtartalom: {kocsi.urtartalom} cm³</p>
         <p>Szín: {kocsi.szin}</p>
-        <p>Ár: {kocsi.ar?.toLocaleString()} Ft</p>
+
+        {/* 🔹 Ár megjelenítés nyelv és valuta szerint */}
+        <p>Ár: {kocsi.ar?.toLocaleString()} {kocsi.valuta}</p>
       </div>
     </div>
   );

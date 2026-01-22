@@ -3,21 +3,25 @@ import "./Cars.css";
 import Car from "./Car";
 import Navbar from "../components/Navbar";
 
+const EUR_RATE = 390; // árfolyam Ft → €
+
 const Cars = () => {
+  // 🔹 Állapotok
   const [cars, setCars] = useState([]);
   const [eredetiCars, setEredetiCars] = useState([]);
-  
-
-  // szűrők state-jei
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedFuels, setSelectedFuels] = useState([]);
+  const [lang, setLang] = useState("hu"); // nyelv state
 
+  // 🔹 Valuta és ár átváltás
+  const currencySymbol = lang === "en" ? "€" : "Ft";
+  const convertPrice = (priceFt) => (lang === "en" ? Math.round(priceFt / EUR_RATE) : priceFt);
+
+  // 🔹 Adatok lekérése
   useEffect(() => {
     const kocsiLeker = async () => {
       const response = await fetch("http://localhost:3500/api/cars-frontend");
       const adat = await response.json();
-      console.log(adat.cars);
-      
       if (response.ok) {
         setCars(adat.cars);
         setEredetiCars(adat.cars);
@@ -25,30 +29,21 @@ const Cars = () => {
         window.alert(adat.msg);
       }
     };
-
     kocsiLeker();
   }, []);
 
+  // 🔹 Márka szűrés
   const handleList = (brand) => {
-    console.log(brand);
-    setCars(eredetiCars)
-    console.log(eredetiCars);
-    console.log(cars);
+    setSelectedBrand(brand);
     if (brand !== "Összes") {
-      let brandCars = eredetiCars.filter(elem => elem.marka.includes(brand))
-      setCars(brandCars) 
-    } else if (brand === "Összes") {
-      setCars(eredetiCars)
+      setCars(eredetiCars.filter((elem) => elem.marka.includes(brand)));
+    } else {
+      setCars(eredetiCars);
     }
-    // if (selectedFuels.includes(fuel)) {
-    //   setSelectedFuels(selectedFuels.filter((f) => f !== fuel));
-    // } else {
-    //   setSelectedFuels([...selectedFuels, fuel]);
-    // }
   };
-  
-  // üzemanyag checkbox kezelése
-  const handleFuelChange = (fuel) => {    
+
+  // 🔹 Üzemanyag szűrés
+  const handleFuelChange = (fuel) => {
     if (selectedFuels.includes(fuel)) {
       setSelectedFuels(selectedFuels.filter((f) => f !== fuel));
     } else {
@@ -60,13 +55,17 @@ const Cars = () => {
     <>
       <Navbar />
 
+      {/* 🔹 Nyelvváltó gombok */}
+      <div className="language-switch">
+        <button onClick={() => setLang("hu")}>Magyar (Ft)</button>
+        <button onClick={() => setLang("en")}>English (€)</button>
+      </div>
+
+      {/* 🔹 Szűrők */}
       <div className="szurok">
         <div className="balszuro">
           <h4>Típus (márka):</h4>
-          <select
-            value={selectedBrand}
-            onChange={(e) => handleList(e.target.value)}
-          >
+          <select value={selectedBrand} onChange={(e) => handleList(e.target.value)}>
             <option></option>
             <option value="Összes">Összes</option>
             <option value="Audi">Audi</option>
@@ -89,62 +88,42 @@ const Cars = () => {
           </select>
         </div>
 
-        <h1>Bérelhető autók</h1>
+        <h1>{lang === "en" ? "Available Cars" : "Bérelhető autók"}</h1>
 
         <div className="jobbszuro">
-          <h4>Üzemanyag:</h4>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedFuels.includes("benzin")}
-              onChange={() => handleFuelChange("benzin")}
-            />
-            Benzin
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedFuels.includes("dizel")}
-              onChange={() => handleFuelChange("dizel")}
-            />
-            Dizel
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedFuels.includes("benzin + villany")}
-              onChange={() => handleFuelChange("benzin + villany")}
-            />
-            Benzin + villany
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedFuels.includes("elektromos")}
-              onChange={() => handleFuelChange("elektromos")}
-            />
-            Elektromos
-          </label>
+          <h4>{lang === "en" ? "Fuel:" : "Üzemanyag:"}</h4>
+          {["benzin", "dizel", "benzin + villany", "elektromos"].map((fuel) => (
+            <label key={fuel}>
+              <input
+                type="checkbox"
+                checked={selectedFuels.includes(fuel)}
+                onChange={() => handleFuelChange(fuel)}
+              />
+              {fuel}
+            </label>
+          ))}
         </div>
       </div>
 
+      {/* 🔹 Autók listázása */}
       <div className="kocsik-kontener">
         {cars
           .filter((elem) => {
-            if (selectedBrand && elem.tipus !== selectedBrand) return false;
-            if (
-              selectedFuels.length > 0 &&
-              !selectedFuels.includes(elem.uzemanyag)
-            )
+            if (selectedBrand && selectedBrand !== "Összes" && elem.marka !== selectedBrand)
+              return false;
+            if (selectedFuels.length > 0 && !selectedFuels.includes(elem.uzemanyag))
               return false;
             return true;
           })
           .map((elem) => (
-            <Car key={elem._id} kocsi={elem} />
+            <Car
+              key={elem._id}
+              kocsi={{
+                ...elem,
+                ar: convertPrice(elem.ar), // 🔹 átváltott ár
+                valuta: currencySymbol,     // 🔹 Ft vagy €
+              }}
+            />
           ))}
       </div>
     </>
