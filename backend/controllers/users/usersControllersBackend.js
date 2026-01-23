@@ -2,7 +2,7 @@ const User = require('../../models/User.js');
 
 exports.getAllUsersBackend = async (req, res) => {
     try {
-        const users = await User.find({});
+        const users = await User.find({}).populate('kedveltAutok');
         res.statusCode = 200;
         return res.render('users/users.ejs', { users });
     } catch (error) {

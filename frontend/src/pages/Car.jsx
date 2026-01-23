@@ -1,11 +1,42 @@
 import { useEffect, useState } from "react";
 import "./Car.css";
+import like from '../../public/images/like.png';
 
 const Car = ({ kocsi }) => {
   const [kedvezmeny, setKedvezmeny] = useState("");
+  const [kedvelem, setKedvelem] = useState(0);
+  const [favCar, setFavCar] = useState([]);
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => { 
+      const userLeker = async () => { 
+          const response = await fetch(`http://localhost:3500/api/users-frontend/${user._id}`);
+          const userF = await response.json(); 
+          setFavCar(userF.user.kedveltAutok);
+        localStorage.setItem('favorites', JSON.stringify(userF.user.kedveltAutok));
+        
+        let kedv = false;
+    
+    userF.user.kedveltAutok.forEach(elem => {
+      if (elem._id === kocsi._id) {
+        kedv = true;
+      }
+    });
+    
+    if (kedv) setKedvelem(1);
+      };
+      
+    if (user) userLeker();
+
+    
+    
+    setKedvezmeny(kocsi.kedvezmeny);
+  }, [kocsi.kedvezmeny]);
 
   useEffect(() => {
-    setKedvezmeny(kocsi.kedvezmeny);
+    
+    
+    
   }, [kocsi.kedvezmeny]);
 
   const betolt = (id) => {
@@ -18,6 +49,11 @@ const Car = ({ kocsi }) => {
     if (kedvezmeny === 20) return "kedvezmeny-kek";
     if (kedvezmeny === 30) return "kedvezmeny-piros";
     return "";
+  };
+
+  const kedvelesFel = () => { 
+    console.log(id);
+    
   };
 
   return (
@@ -36,6 +72,11 @@ const Car = ({ kocsi }) => {
               -{kedvezmeny}%
             </div>
           )}
+          { kedvelem ? 
+            <div className="like-logo"><img src={ like } /></div>
+            :
+            <></>
+          }
         </div>
 
         <h2>Részletek:</h2>

@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			require: true,
 		},
+		kedveltAutok: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'car'
+			}
+		],
 		admin: {
 			type: Boolean,
 			default: false,

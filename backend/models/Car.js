@@ -55,7 +55,6 @@ const carSchem = new mongoose.Schema(
             require: true,
             default: true
         },
-
         ar: {
             type: Number,
             require: true,

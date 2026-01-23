@@ -38,6 +38,7 @@ app.use('/api/szures-car', require('./routes/szuresCarsBackend'));
 app.use('/api/cars-frontend', require('./routes/carRoutesFrontend.js'));
 
 app.use('/api/users-backend', require('./routes/users/usersRoutesBackend.js'));
+app.use('/api/users-frontend', require('./routes/users/usersRoutesFrontend.js'));
 app.use(
     '/api/register-frontend',
     require('./routes/users/userRegisterRoutes.js')

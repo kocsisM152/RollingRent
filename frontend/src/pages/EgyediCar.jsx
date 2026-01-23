@@ -20,9 +20,23 @@ const DetailItem = ({ label, value, icon }) => (
 
 const EgyediCar = () => {
     const { id } = useParams();
+    const user = JSON.parse(localStorage.getItem('user'));
 
     const [car, setCar] = useState({});
+    const [favCar, setFavCar] = useState([]);
     const [kepek, setKepek] = useState([]);
+    const [kedvelem, setKedvelem] = useState('igen');
+
+    useEffect(() => { 
+        const userLeker = async () => { 
+            const response = await fetch(`http://localhost:3500/api/users-frontend/${user._id}`);
+            const userF = await response.json(); 
+            setFavCar(userF.user.kedveltAutok);
+            localStorage.setItem('favorites', JSON.stringify(userF.user.kedveltAutok));
+        };
+        
+        userLeker();
+    }, []);
 
     useEffect(() => {
         // ... (adatlekérő logika változatlan) ...
@@ -36,12 +50,23 @@ const EgyediCar = () => {
             if (response.ok) {
                 setCar(kocsi[0]);
                 setKepek(kocsi[0].kepek);
+                let kedvelt = false;
+
+                for (let i = 0; i < favCar.length; i++) {
+                    console.log(favCar[i]);
+                    console.log(kocsi[0]._id);
+                    if (favCar[i]._id === kocsi[0]._id) {
+                        kedvelt = true;
+                    }   
+                }
+                
+                kedvelt ? setKedvelem('igen') : setKedvelem('nem');
             } else {
                 window.alert(adat.msg);
             }
         };
         kocsiLeker();
-    }, [id]);
+    }, [id, favCar]);
 
     useEffect(() => {
         if (kepek.length > 0) {
@@ -91,6 +116,29 @@ const EgyediCar = () => {
     const dots = kepek.map((_, i) => (
         <span className="dot" key={i} onClick={() => currentSlide(i + 1)}></span>
     ));
+
+    const kedvelemAllitas = async (e) => { 
+        setKedvelem(e.target.value);
+        let tomb = favCar;
+        let tombF = [];
+
+        if (e.target.value === 'igen') tombF = [...tomb, car];
+        else if (e.target.value === 'nem') {
+            tombF = tomb.filter(elem => elem._id !== car._id);
+        }
+        console.log(tombF);
+        
+
+        const response = await fetch(`http://localhost:3500/api/users-frontend/${user._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ cars: tombF })
+        })
+
+        localStorage.setItem('favorites', JSON.stringify(tombF));
+    };
 
     return (
         <div className="egyedi-car-kontener">
@@ -172,6 +220,21 @@ const EgyediCar = () => {
                             />
                         </ul>
                     </div>
+                    <div>
+                        <input type="radio" name="szeretem" value="igen" checked={kedvelem ==='igen' ? true : false} onChange={kedvelemAllitas} />
+                        <label htmlFor="igen">Kedvelem</label>
+                        <input type="radio" name="szeretem" value="nem" checked={kedvelem ==='nem' ? true : false} onChange={kedvelemAllitas} />
+                        <label htmlFor="nem">Nem kedvelem</label>
+                    </div>
+                        {/* { kedvelem === 'igen' ? 
+                        : 
+                            <div>
+                                <input type="radio" name="szeretem" value="igen" onChange={kedvelemAllitas} />
+                                <label htmlFor="igen">Kedvelem</label>
+                                <input type="radio" name="szeretem" value="nem" checked={kedvelem ==='nem'} onChange={kedvelemAllitas} />
+                                <label htmlFor="nem">Nem kedvelem</label>
+                            </div>
+                         } */}
                     <FoglalasiNaptar
                         foglalhato={car.foglalhatoe}
                         car={car}
