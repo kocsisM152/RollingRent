@@ -220,12 +220,32 @@ const EgyediCar = () => {
                             />
                         </ul>
                     </div>
-                    <div>
-                        <input type="radio" name="szeretem" value="igen" checked={kedvelem ==='igen' ? true : false} onChange={kedvelemAllitas} />
-                        <label htmlFor="igen">Kedvelem</label>
-                        <input type="radio" name="szeretem" value="nem" checked={kedvelem ==='nem' ? true : false} onChange={kedvelemAllitas} />
-                        <label htmlFor="nem">Nem kedvelem</label>
-                    </div>
+                    {user ? 
+                    
+                   <div className="like-container">
+  <label className={`like-option ${kedvelem === 'igen' ? 'active like' : ''}`}>
+    <input
+      type="radio"
+      name="szeretem"
+      value="igen"
+      checked={kedvelem === 'igen'}
+      onChange={kedvelemAllitas}
+    />
+    ❤️ Kedvelem
+  </label>
+
+  <label className={`like-option ${kedvelem === 'nem' ? 'active dislike' : ''}`}>
+    <input
+      type="radio"
+      name="szeretem"
+      value="nem"
+      checked={kedvelem === 'nem'}
+      onChange={kedvelemAllitas}
+    />
+    💔 Nem kedvelem
+  </label>
+</div> :  <></>}
+
                         {/* { kedvelem === 'igen' ? 
                         : 
                             <div>
