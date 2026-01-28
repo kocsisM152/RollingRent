@@ -4,12 +4,15 @@ const bcrypt = require('bcrypt');
 exports.registerUser = async (req, res) => {
     try {
         const { nev, email, jelszo } = req.body;
+        console.log('Norbi');
+        
 
         const users = await User.find({});
 
         const letezoUser = users.filter((elem) => elem.email === email);
 
         if (letezoUser.length !== 0) {
+            res.status = 403;
             throw new Error('Ezzel az e-mail címmel már regisztráltak!');
         }
 
