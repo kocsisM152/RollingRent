@@ -1,4 +1,4 @@
-.kocsik-kontener {
+/* .kocsik-kontener {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -11,5 +11,107 @@
 
 h1{
   height: auto;
+} */
+
+/* @media  screen and (max-width: 1250px) {
+  .kocsik-kontener {
+    grid-template-columns: repeat(2, 1fr);
+  }  
 }
 
+@media  screen and (max-width: 750px) {
+  .kocsik-kontener {
+    grid-template-columns: repeat(1, 1fr);
+  }  
+}
+
+@media  screen and (max-width: 1250px) {
+  .szurok {
+    grid-template-columns: repeat(1, 1fr);
+  }  
+} */
+ /* --- Szűrő rész elrendezése --- */
+.szurok {
+    display: flex;
+    flex-direction: column; /* Alapból egymás alá rakjuk az elemeket (Mobil) */
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #000; /* A kép alapján fekete háttér */
+    color: white;
+}
+
+/* A cím és a két szűrő csoport konténere */
+.szuro-fejlec {
+    display: flex;
+    flex-wrap: wrap; /* Ha nem fér el, tördeli */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.szuro-csoport {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Cím stílusa */
+h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    text-align: center;
+    flex: 1 1 100%; /* Mobilon teljes szélesség, hogy felül legyen */
+}
+
+/* --- RESPONZIVITÁS --- */
+
+/* Asztali nézet (1250px felett) */
+@media screen and (min-width: 1251px) {
+    .szuro-fejlec {
+        justify-content: space-between;
+    }
+    
+    h1 {
+        flex: 0 1 auto; /* Csak annyi helyet foglal, amennyi kell */
+        order: 1; /* Cím balra vagy középre */
+    }
+    
+    .szuro-csoport:nth-child(2) { order: 2; } /* Típus */
+    .szuro-csoport:nth-child(3) { order: 3; } /* Üzemanyag */
+}
+
+/* Tablet és közepes képernyő (max 1250px) */
+@media screen and (max-width: 1250px) {
+    .kocsik-kontener {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    h1 {
+        font-size: 2rem;
+        order: -1; /* Kényszerítjük, hogy legfelül legyen */
+    }
+    
+    .szuro-fejlec {
+        flex-direction: row; /* Egymás mellett legyenek a szűrők a cím alatt */
+        justify-content: space-around;
+    }
+}
+
+/* Mobil nézet (max 750px) */
+@media screen and (max-width: 750px) {
+    .kocsik-kontener {
+        grid-template-columns: 1fr;
+    }
+
+    .szuro-fejlec {
+        flex-direction: column; /* Mobilon minden egymás alá kerül */
+        text-align: center;
+    }
+
+    .language-switch {
+        justify-content: center;
+        width: 100%;
+    }
+}

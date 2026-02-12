@@ -2,99 +2,127 @@ body {
     margin: 0;
     padding: 0;
     user-select: none;
-    /* background-image: url('https://cdn.wallpapersafari.com/71/51/z3s0a7.jpg');  Nissan GTR R35 kép */
-    /* background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;  */
+    overflow-x: hidden; /* Megakadályozza az oldalsó görgetést */
 }
 
 .home-background {
-    background-image: url('https://cdn.wallpapersafari.com/71/51/z3s0a7.jpg'); /* Nissan GTR R35 kép */
+    background-image: url('https://cdn.wallpapersafari.com/71/51/z3s0a7.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding-top: 40px;
-
-    /* EZ KELL, HOGY LÁTSZÓDJON A KÉP */
     height: 100vh;
     width: 100%;
+    position: relative; /* Fontos az ::after overlay miatt */
 }
 
-/* Sötét overlay, hogy a szöveg kiemelkedjen */
 .home-background::after {
     content: '';
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    z-index: -1;
+    z-index: 1; /* Pozitívra állítva, hogy a kép felett legyen */
 }
 
-/* Menü */
+/* Menü - Rugalmasabbá téve */
 .menu {
-    /* margin-top: 40px; */
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
-    z-index: 2;
-    display: flex;
-    gap: 50px;
-    /* padding: 15px 40px; */
+    gap: 30px;
+    height: 80px;
+    z-index: 10;
+    position: relative;
     background: rgba(0, 0, 0, 0.35);
     border-radius: 14px;
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-    width: 20%;
-    margin: auto;
+    
+    /* Fix 20% helyett legyen rugalmas */
+    width: 90%; 
+    max-width: 600px; 
+    margin: 0 auto;
 }
 
-.menu a {
-    background: none;
-    border: none;
+.menu a, .menu button {
     color: white;
-    font-size: 2rem;
+    font-size: 1.2rem; /* Kicsit kisebb alapméret */
     font-weight: 600;
     cursor: pointer;
-    z-index: 3;
     transition: 0.3s;
     text-decoration: none;
-}
-
-.menu button {
     background: none;
     border: none;
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
-.menu button:hover {
-    color: cyan;
-}
+.menu button:hover { color: cyan; }
 
-/* Home szöveg */
+/* Home szöveg konténer */
 .home-kontener {
-    margin-top: 140px;
-    margin-left: 220px;
-    z-index: 2;
+    position: relative;
+    z-index: 10;
     color: white;
-    font-size: 3rem;
+    font-size: 1.8rem; /* Kisebb alapméret, amit növelünk desktopon */
     font-weight: 700;
-    padding: 40px 120px;
+    padding: 30px;
     background: rgba(0, 0, 0, 0.35);
     border-radius: 22px;
     backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.22);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
     transition: 0.3s;
-    width: 60%;
+    
+    /* Középre igazítás fix margók helyett */
+    width: 85%;
+    max-width: 800px;
+    margin: 80px auto 0 auto;
     text-align: center;
 }
 
 .home-kontener:hover {
-    transform: scale(1.06);
+    transform: scale(1.02);
     box-shadow: 0 0 45px rgba(0, 255, 255, 0.45);
+}
+
+/* --- RESPONZIVITÁS (MEDIA QUERIES) --- */
+
+/* Tablet méret (például iPad) */
+@media (min-width: 768px) {
+    .menu {
+        width: 50%;
+        gap: 50px;
+    }
+    .home-kontener {
+        font-size: 2.5rem;
+        margin-top: 100px;
+        padding: 40px 80px;
+    }
+}
+
+/* Desktop méret */
+@media (min-width: 1200px) {
+    .menu {
+        width: 25%; /* Itt már lehet keskenyebb a menü */
+    }
+    .home-kontener {
+        font-size: 3rem;
+        margin-top: 140px;
+        width: 60%;
+    }
+}
+
+/* Extra kis kijelzők (régebbi mobilok) */
+@media (max-width: 480px) {
+    .menu {
+        gap: 15px;
+        height: 60px;
+    }
+    .menu a, .menu button {
+        font-size: 1rem;
+    }
+    .home-kontener {
+        font-size: 1.4rem;
+        padding: 20px;
+    }
 }
