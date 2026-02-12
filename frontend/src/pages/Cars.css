@@ -7,6 +7,19 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap; /* EZ HIÁNYZOTT */
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1{
@@ -25,9 +38,10 @@ h1{
   }  
 }
 
-@media  screen and (max-width: 1250px) {
+@media screen and (max-width: 750px) {
   .szurok {
-    grid-template-columns: repeat(1, 1fr);
-  }  
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
