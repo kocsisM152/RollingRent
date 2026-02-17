@@ -45,7 +45,7 @@ const Login = () => {
 						<td><input type="password" id="jelszo" onChange={(e) => setJelszo(e.target.value)} /></td>
 					</tr>
 					<tr>
-						<td><button onClick={bejelentkezes}>Bejelentkezés </button></td>
+						<td><button onClick={bejelentkezes}  id="bejelentkezes-gomb">Bejelentkezés </button></td>
 						<td></td>
 					</tr>
 					</tbody>

@@ -32,11 +32,11 @@ const Navbar = () => {
             {isLoggedIn ? (
                 <div className="login-belso-kontener">
                     <Link to="/register">Regisztráció</Link>
-                    <Link to="/login">Bejelentkezés</Link>
+                    <Link to="/login" id="bejelentkezes">Bejelentkezés</Link>
                 </div>
             ) : (
                 <div className="logout-kontener">
-                    <button onClick={kijelentkezes}>Kijelentkezés</button>
+                    <button onClick={kijelentkezes} id="kijelentkezes">Kijelentkezés</button>
                 </div>
             )}
             {isAdmin ? (
