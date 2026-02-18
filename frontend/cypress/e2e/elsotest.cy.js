@@ -5,8 +5,8 @@ describe('template spec', () => {
     cy.get('[id="kijelentkezes"]').click();
     cy.get('[id="autok"]').click();
     cy.get('[id="bejelentkezes"]').click();
-    cy.get('[id="email"').type("pepe@gmail.com")
-    cy.get('[id="jelszo"').type("pepe")
+    cy.get('[id="email"').type("pepe12@gmail.com")
+    cy.get('[id="jelszo"').type("pepe12")
     cy.get('[id="bejelentkezes-gomb"]').click();
   })
 })
