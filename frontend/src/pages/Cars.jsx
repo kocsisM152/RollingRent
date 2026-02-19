@@ -64,7 +64,8 @@ const Cars = () => {
       {/* 🔹 Szűrők */}
       <div className="szurok">
         <div className="balszuro">
-          <h4>Típus (márka):</h4>
+          {/* <h4>Típus (márka):</h4> */}
+          <h4>{lang === "en" ? "Type (brand):" : "Típus (márka):"}</h4>
           <select value={selectedBrand} onChange={(e) => handleList(e.target.value)}>
             <option></option>
             <option value="Összes">Összes</option>

@@ -22,32 +22,38 @@ const Navbar = () => {
         window.location.href = '/';
     }
 
-    return (
-        <div className="navbar-kontener">
-            <Link to="/">Nyitó</Link>
-            <Link to="/lead">Főoldal</Link>
-            <Link to="/cars">Autók</Link>
-            <Link to="/favouritecars">Kedvenc Autók</Link>
-            <Link to="/policy">Bérleti Feltételek</Link>
-            {isLoggedIn ? (
-                <div className="login-belso-kontener">
-                    <Link to="/register">Regisztráció</Link>
-                    <Link to="/login" id="bejelentkezes">Bejelentkezés</Link>
-                </div>
-            ) : (
-                <div className="logout-kontener">
-                    <button onClick={kijelentkezes} id="kijelentkezes">Kijelentkezés</button>
-                </div>
-            )}
-            {isAdmin ? (
-                <div className="backend-nav">
-                    <Link to="http://localhost:3500/api">Szerver</Link>
-                </div>
-            ) : (
-                <div className="backend-nav"></div>
-            )}
-        </div>
-    );
-};
+   return (
+  <nav className="navbar">
+    <div className="nav-links">
+      <Link to="/">Nyitó</Link>
+      <Link to="/lead">Főoldal</Link>
+      <Link to="/cars">Autók</Link>
+      <Link to="/favouritecars">Kedvenc Autók</Link>
+      <Link to="/policy">Bérleti Feltételek</Link>
+    </div>
 
+    <div className="nav-actions">
+      {isAdmin && (
+        <Link className="nav-badge" to="http://localhost:3500/api">
+          Szerver
+        </Link>
+      )}
+
+      {isLoggedIn ? (
+        <div className="auth">
+          <Link to="/register">Regisztráció</Link>
+          <Link to="/login" id="bejelentkezes">Bejelentkezés</Link>
+        </div>
+      ) : (
+        <div className="auth">
+          <button onClick={kijelentkezes} id="kijelentkezes">
+            Kijelentkezés
+          </button>
+        </div>
+      )}
+    </div>
+  </nav>
+);
+
+}
 export default Navbar;

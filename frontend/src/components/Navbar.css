@@ -88,3 +88,189 @@
 .logout-kontener button:hover {
     background-color: #c82333;
 }
+
+.navbar-kontener{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;            /* a menü törhet több sorba */
+}
+
+/* (opcionális) a fő linkek se törjenek szavanként */
+.navbar-kontener > a{
+  white-space: nowrap;
+}
+
+/* A be-/kijelentkezés blokk maradjon EGYBEN és egymás mellett */
+.login-belso-kontener,
+.logout-kontener{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;          /* ne törje egymás alá a gombokat */
+  white-space: nowrap;        /* ne törje a szöveget sem */
+  margin-left: auto;          /* jobb oldalra tolja az auth részt */
+}
+
+.logout-kontener button,
+.login-belso-kontener a{
+  white-space: nowrap;
+}
+
+/* Nagyon keskeny nézetben inkább menjen új sorba, de maradjon egymás mellett */
+@media (max-width: 480px){
+  .login-belso-kontener,
+  .logout-kontener{
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Alap navbar */
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 16px;
+  gap: 12px;
+
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Bal oldali menü linkek */
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+  min-width: 0; /* fontos: ne tolja szét a flexet */
+}
+
+/* Jobb oldali akciók (admin + auth) */
+.nav-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-wrap: nowrap;      /* NE törje több sorba */
+  white-space: nowrap;    /* NE törje a szöveget sem */
+}
+
+/* Auth blokk (login/register vagy logout gomb) */
+.auth{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Közös “pill” kinézet linkeknek és gombnak */
+.navbar a,
+.navbar button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.navbar a:hover,
+.navbar button:hover{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.navbar a:active,
+.navbar button:active{
+  transform: translateY(1px);
+}
+
+/* Billentyűzet fókusz szép */
+.navbar a:focus-visible,
+.navbar button:focus-visible{
+  outline: 2px solid rgba(59,130,246,0.9);
+  outline-offset: 2px;
+}
+
+/* Admin badge kissé kiemelve */
+.nav-badge{
+  background: rgba(59,130,246,0.18) !important;
+  border-color: rgba(59,130,246,0.35) !important;
+}
+
+/* Mobil: a menü felül vízszintesen görgethető, az akciók alul középre kerülnek */
+@media (max-width: 600px){
+  .navbar{
+    flex-wrap: wrap;
+  }
+
+  .nav-links{
+    order: 1;
+    width: 100%;
+    flex-wrap: nowrap;          /* egy sor */
+    overflow-x: auto;           /* görgethető */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    gap: 10px;
+  }
+
+  /* görgetős sáv ne legyen óriási */
+  .nav-links::-webkit-scrollbar{
+    height: 6px;
+  }
+  .nav-links::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+  }
+
+  .nav-actions{
+    order: 2;
+    width: 100%;
+    justify-content: center;    /* szépen középen */
+  }
+}
+
+@media (max-width: 650px){
+  .navbar-kontener{
+    overflow-x: auto;                 /* ne vágja le a végét */
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;                /* maradjon egy sorban */
+    padding-right: 20px;              /* a legutolsó gomb se lógjon ki */
+    scroll-padding-right: 20px;
+  }
+
+  .navbar-kontener > a{
+    flex: 0 0 auto;                   /* linkek ne zsugorodjanak */
+    white-space: nowrap;              /* "Bérleti feltételek" ne törjön */
+  }
+
+  /* hogy az auth/admin részek lehessenek külön sorban */
+  .login-belso-kontener,
+  .logout-kontener,
+  .backend-nav{
+    flex: 0 0 auto;
+  }
+}

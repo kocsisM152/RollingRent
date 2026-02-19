@@ -6,6 +6,8 @@ const Car = ({ kocsi }) => {
   const [kedvezmeny, setKedvezmeny] = useState("");
   const [kedvelem, setKedvelem] = useState(0);
   const [favCar, setFavCar] = useState([]);
+  const [lang, setLang] = useState("hu"); // nyelv state
+
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => { 
@@ -80,13 +82,14 @@ const Car = ({ kocsi }) => {
         </div>
 
         <h2>Részletek:</h2>
-        <p>Származási ország: {kocsi.szarmazasiorszag}</p>
-        <p>Évjárat: {kocsi.evjarat}</p>
-        <p>Üzemanyag: {kocsi.uzemanyag}</p>
-        <p>Váltó: {kocsi.valto}</p>
-        <p>Teljesítmény: {kocsi.teljesitmeny} LE</p>
-        <p>Űrtartalom: {kocsi.urtartalom} cm³</p>
-        <p>Szín: {kocsi.szin}</p>
+        {/* <p>Származási ország: {kocsi.szarmazasiorszag}</p> */}
+<p>{lang === "en" ? "Country of origin:" : "Származási ország:"} {kocsi.szarmazasiorszag}</p>
+<p>{lang === "en" ? "Model year:" : "Évjárat:"} {kocsi.evjarat}</p>
+<p>{lang === "en" ? "Fuel type:" : "Üzemanyag:"} {kocsi.uzemanyag}</p>
+<p>{lang === "en" ? "Transmission:" : "Váltó:"} {kocsi.valto}</p>
+<p>{lang === "en" ? "Power:" : "Teljesítmény:"} {kocsi.teljesitmeny} {lang === "en" ? "hp" : "LE"}</p>
+<p>{lang === "en" ? "Engine displacement:" : "Űrtartalom:"} {kocsi.urtartalom} cm³</p>
+<p> {lang === "en" ? "Color:" : "Szín:"} {kocsi.szin}</p>
 
         {/* 🔹 Ár megjelenítés nyelv és valuta szerint */}
         <p>Ár: {kocsi.ar?.toLocaleString()} {kocsi.valuta}</p>
